@@ -6,18 +6,21 @@ const people = [
     role: "Co-Founder / CEO",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      email:"email@email.com"
   },
   {
     name: "Leslie Alexander",
     role: "Co-Founder / CEO",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      email:"email@email.com"
   },
   {
     name: "Leslie Alexander",
     role: "Co-Founder / CEO",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      email:"email@email.com"
   },
 ];
 function About() {
@@ -57,6 +60,9 @@ function About() {
                     <div className="text-xs font-medium lg:text-sm">
                       <h3>{person.name}</h3>
                       <p className="text-indigo-600">{person.role}</p>
+                      <p className="text-gray-400">{person.email}</p>
+
+
                     </div>
                   </div>
                 </div>

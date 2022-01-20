@@ -8,8 +8,8 @@ function Social() {
         Check out our social medias!
       </h1>
       <div className=" flex flex-row justify-around">
-        <div className="flex flex-col w-1/4 pb-6">
-          <img src="https://via.placeholder.com/728x500" />
+        <div className="flex flex-col w-1/4 pb-6 rounded-lg">
+          <img src="assets/images/image_1.jpg" />
           <div className=" flex flex-col bg-gray-50 p-12">
             <svg
               className="w-10 mx-auto mb-2 "
@@ -28,8 +28,8 @@ function Social() {
           </div>
         </div>
         {/* Insta */}
-        <div className="flex flex-col w-1/4 pb-6">
-          <img src="https://via.placeholder.com/728x500" />
+        <div className="flex flex-col w-1/4 pb-6 rounded-lg">
+          <img src="assets/images/image_2.jpg" />
 
           <div className=" flex flex-col bg-gray-50 p-12">
             <svg
@@ -65,8 +65,8 @@ function Social() {
           </div>
         </div>
         {/* twitter */}
-        <div className="flex flex-col w-1/4 pb-6">
-          <img src="https://via.placeholder.com/728x500" />
+        <div className="flex flex-col w-1/4 pb-6 rounded-lg">
+          <img src="assets/images/image_4.jpg" />
 
           <div className=" flex flex-col bg-gray-50 p-12">
             <svg

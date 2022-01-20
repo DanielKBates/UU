@@ -23,9 +23,15 @@ function Events() {
                 Check out our First Annual 0K For Charity!
               </h2>
             </Link>
-            <p className="py-2">
+            <p className="py-2 text-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sit
-              doloribus culpa obcaecati...
+              doloribus culpa obcaecati Race Eat Be Merry Much Soccer and
+              Socializing Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Harum sit doloribus culpa obcaecati Race Eat Be Merry Much
+              Soccer and Socializing Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Harum sit doloribus culpa obcaecati Race Eat Be
+              Merry Much Soccer and Socializing Lorem ipsum dolor sit amet
+          ...
             </p>
           </div>
         </div>

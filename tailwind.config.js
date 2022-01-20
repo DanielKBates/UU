@@ -18,6 +18,9 @@ module.exports = {
       animation:{
         fadeIn: "fadeIn 2s ease-in",
         fadeInLong: "fadeInLong 3s ease-in"
+      },
+      transitionDuration: {
+        '1400': "1400ms"
       }
     },
   },
