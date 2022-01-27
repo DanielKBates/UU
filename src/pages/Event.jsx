@@ -24,6 +24,9 @@ function Event() {
           <p className="py-6 text-lg">
           {currentEvent[0].desc}
           </p>
+          <p className="py-6 text-lg">
+          {currentEvent[0].desc}
+          </p>
           {currentEvent[0].href ? <>
           <span className="py-2 text-xl text-blue-700">Check out this event's page: </span>
           <a

@@ -81,7 +81,7 @@ function Home() {
 
       {/* Feature section with grid */}
       <AnimatedCard
-        threshold={.25}
+        threshold={.50}
         activeClassName="transition-all duration 1400 ease-in transform opacity-1"
         inactiveClassName="transition-all duration 1400 ease-in transform opacity-0"
       >

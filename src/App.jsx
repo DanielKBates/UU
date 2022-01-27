@@ -12,7 +12,7 @@ import Social from "./pages/Social";
 import Control from "./pages/Control";
 import EventsPage from "./pages/EventsPage";
 import Event from "./pages/Event";
-
+    
 function App() {
   return (
     <Router>
