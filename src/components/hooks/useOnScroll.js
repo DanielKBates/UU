@@ -19,4 +19,4 @@ const useOnScroll = (options) => {
   return [scrollRef, isVisible]
 }
 
-export default useOnScroll;
+export default useOnScroll; 

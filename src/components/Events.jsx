@@ -10,10 +10,10 @@ function Events() {
     //   in the array being mapped onto the smaller cards. We will need to implement an admin panel for CLIENT to be able to add events and thus update the site.
     <div className=" flex flex-row py-6 justify-around w-full">
       {/* Events */}
-      <div className="flex flex-col w-full md:w-3/5">
+      <div className="flex flex-col w-full md:w-1/2">
         <div className="bg-white bg-opacity-50 rounded-lg h-full ">
           <img
-            src="/assets/images/uu_placeholder.jpeg"
+            src="/assets/images/charityEvent.jpg"
             width="100%"
             className="m-auto cursor-pointer rounded-t-lg"
           />
@@ -24,14 +24,10 @@ function Events() {
               </h2>
             </Link>
             <p className="py-2 text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sit
-              doloribus culpa obcaecati Race Eat Be Merry Much Soccer and
-              Socializing Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Harum sit doloribus culpa obcaecati Race Eat Be Merry Much
-              Soccer and Socializing Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Harum sit doloribus culpa obcaecati Race Eat Be
-              Merry Much Soccer and Socializing Lorem ipsum dolor sit amet
-          ...
+              A 0k is exactly what it sounds like, a race without any distance.
+              You will be racing with friends from around the community to raise
+              money for the Charlotte Rescue Mission. Your donation will get you
+              a ticket to the event.
             </p>
           </div>
         </div>

@@ -136,32 +136,13 @@ function Soccer() {
       case "scores":
         return (
           <>
-            <div className="w-full">
-              {" "}
-              <div className="inline-block">
-                <div>
-                  <img
-                    width="40"
-                    className="my-3 mx-1 inline-block"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpAQOZ368EC5gDozkBjhQEbKiu25KclMjsdwOENHB-&usqp=CAE&s"
-                  />
-                  <h5 className="px-3 inline-block">LOS</h5>
-                </div>
-                <div>
-                  <img
-                    width="40"
-                    className="my-3 mx-1 inline-block"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVUJYwsAx5DpdulAZLz41ACSfQv0IKnGhky2rz6Q&usqp=CAE&s"
-                  />
-                  <h5 className="px-3 inline-block font-medium">POR</h5>
-                </div>
+            <>
+              <div>
+                <p className="text-lg text-gray-500 italic">
+                  Check back for live score updates around the league!
+                </p>
               </div>
-              <div className="inline-block bg-gray-300 p-5 mx-7 my-5 rounded-md font-medium">
-                <p>3</p>
-                <br />
-                <p>5</p>
-              </div>
-            </div>
+            </>
           </>
         );
       case "cfc":
@@ -190,30 +171,15 @@ function Soccer() {
         );
       case "standings":
         return (
-          <ol
-            role="list"
-            className="divide-y divide-gray-200 list-decimal mx-auto list-outside w-5/6"
-          >
-            {teams.map((team) => (
-              <li
-                key={team.record}
-                className="py-1 pl-2 flex flex-row justify-between space-x-6 w-full"
-              >
-                <div className="flex flex-row space-x-2">
-                  <img
-                    className="h-6 w-6 rounded-full"
-                    src={team.image}
-                    alt=""
-                  />
-
-                  <p className="text-sm font-medium text-gray-900 inline">
-                    {team.name}
-                  </p>
-                </div>
-                <p className="text-sm text-gray-500 inline ">{team.record}</p>
-              </li>
-            ))}
-          </ol>
+          <>
+            <>
+              <div>
+                <p className="text-lg text-gray-500 italic">
+                  Check back for standings around the league!
+                </p>
+              </div>
+            </>
+          </>
         );
     }
   };

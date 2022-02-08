@@ -9,13 +9,13 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
 import Social from "./pages/Social";
-import Control from "./pages/Control";
+import Admin from "./pages/Admin";
 import EventsPage from "./pages/EventsPage";
 import Event from "./pages/Event";
     
 function App() {
   return (
-    <Router>
+    <Router> 
       <ScrollToTop />
       <Navbar />
       <div className="custom-bg">
@@ -24,8 +24,8 @@ function App() {
             <Route exact path="/events/:event" element={<Event />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/signup" element={<Signup />} />
-            <Route exact path="/social" element={<Social />} />
-            <Route exact path="/admin" element={<Control />} />
+            <Route exact path="/social" element={<Social />} />  
+            <Route exact path="/admin" element={<Admin />} />   
             <Route exact path="/events" element={<EventsPage />} />
 
             <Route exact path="/" element={<Home />} />
@@ -33,7 +33,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </Router>
+    </Router> 
   );
 }
 

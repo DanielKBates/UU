@@ -20,7 +20,9 @@ module.exports = {
         fadeInLong: "fadeInLong 3s ease-in"
       },
       transitionDuration: {
-        '1400': "1400ms"
+        '800': "800ms",
+        '1400': "1400ms",
+        '2000':"2000ms"
       }
     },
   },

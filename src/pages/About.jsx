@@ -2,33 +2,43 @@ import React from "react";
 
 const people = [
   {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
+    name: "Lucas Barnhardt",
+    role: "Co-Founder / President",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-      email:"email@email.com"
+      "/assets/images/lucas.jpg",
+    email: "lucasbarnhardt.uptownultras@gmail.com",
   },
   {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
+    name: "Wes Watts",
+    role: "Event Planning",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-      email:"email@email.com"
+      "/assets/images/wes.jpg",
+    email: "email@email.com",
   },
   {
-    name: "Leslie Alexander",
-    role: "Co-Founder / CEO",
+    name: "Sean Gartlet",
+    role: "Co-Founder/ Vice President",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-      email:"email@email.com"
+      "/assets/images/sean.jpg", 
+    email: "email@email.com",
+  },
+  {
+    name: "Charles Haddock",
+    role: "Co-Founder ",
+    imageUrl:
+      "/assets/images/charlesH.jpg",
+    email: "email@email.com",
   },
 ];
 function About() {
   return (
     <div className="bg-white pt-16 ">
-    <div className="flex justify-center items-start w-full ">
-      <img src="/assets/images/altLogo1.png" className="object-cover h-70"></img>
-    </div>
+      <div className="flex justify-center items-start w-full ">
+        <img
+          src="/assets/images/altLogo1.png"
+          className="object-cover h-70"
+        ></img>
+      </div>
       <div className="max-w-7xl mx-auto py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-12">
         <div className="space-y-8 sm:space-y-12">
           <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
@@ -36,12 +46,8 @@ function About() {
               About Us
             </h2>
             <p className="text-xl text-gray-500">
-              We are all about --- This is who we are ---- Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit. Curabitur iaculis, massa vitae
-              dapibus pretium, augue mauris molestie nisl, eget cursus dolor
-              eros vitae velit. Proin ullamcorper auctor accumsan. Etiam
-              consequat velit nec neque consequat, vitae pellentesque nulla
-              vestibulum. Nulla condimentum
+              We are a social group of all types of soccer fans that are commited to celebrating, supporting, and motivating our team. We are inclusive of all peoples and we
+              are dedicated to strengthening our community and our team.
             </p>
           </div>
           <ul
@@ -60,9 +66,7 @@ function About() {
                     <div className="text-xs font-medium lg:text-sm">
                       <h3>{person.name}</h3>
                       <p className="text-indigo-600">{person.role}</p>
-                      <p className="text-gray-400">{person.email}</p>
-
-
+                      {/* <p className="text-gray-400">{person.email}</p> */}
                     </div>
                   </div>
                 </div>
@@ -70,6 +74,8 @@ function About() {
             ))}
           </ul>
         </div>
+        <h1 className="text-3xl">Contact us</h1>
+        <p>email us at s;ldnfiwnefjnwerfnj</p>
       </div>
     </div>
   );

@@ -1,14 +1,12 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   CalendarIcon,
-  CloudUploadIcon,
   FireIcon,
-  LockClosedIcon,
-  RefreshIcon,
   UserGroupIcon,
 } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
-
 
 import Events from "../components/Events";
 import Signup from "../pages/Signup";
@@ -17,24 +15,42 @@ const features = [
   {
     name: "Join us for events",
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi vitae lobortis.",
+      "Away game watch parties, home game tailgates, charity events, and much more!",
     icon: CalendarIcon,
   },
   {
     name: "Connect with fellow fans",
     description:
-      "Qui aut temporibus nesciunt vitae dicta repellat sit dolores pariatur. Temporibus qui illum aut.",
+      "Join like-minded fans in cheering on the team and making a difference in the community.",
     icon: UserGroupIcon,
   },
   {
     name: "Be a part of the Hype",
     description:
-      "Rerum quas incidunt deleniti quaerat suscipit mollitia. Amet repellendus ut odit dolores qui.",
+      "Join a supporter's group so you can help control the atmosphere in the stadium and use the power of soccer to bring people together.",
     icon: FireIcon,
   },
 ];
 
 function Home() {
+  const [event, setEvent] = useState({})
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchData = async () =>{
+      setLoading(true);
+      try {
+        const {data: res} = await axios.get('http://localhost:3001/events');
+        setEvent(res);
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoading(false);
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <main className="pb-2 lg:pb-4 xl:pb-12 pt-28 md:pt-36">
       {/* Splash CTA - probably separate into own component *BE* */}
@@ -45,18 +61,17 @@ function Home() {
               <div className="lg:py-24 ">
                 <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                   <span className="block animate-fadeIn">It's Time</span>
-                  <span className="pb-3 block animate-fadeInLong text-blue-400 sm:pb-5 font-rockSalt py-4 animate-fadeIn">
+                  <span className="pb-3 block animate-fadeInLong text-blue-400 sm:pb-5 font-rockSalt py-4 ">
                     To Get Hype
                   </span>
                 </h1>
-                <p className=" animate-fadeIn text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui Lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                  occaecat fugiat.
+                <p className=" animate-fadeInLong text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
+                  Sign up now and join us on the historic journey that is
+                  Charlotte FC's first MLS season!
                 </p>
                 <div className="mt-10 sm:mt-12 flex justify-center md:justify-start">
                   <Link to="/signup" element={Signup}></Link>
-                  <button className="bg-blue-400 p-6 font-bold text-white rounded-lg">
+                  <button className="bg-blue-400 p-4 w-1/4 font-bold text-white rounded-lg animate-fadeInLong">
                     Sign Up!
                   </button>
                 </div>
@@ -81,14 +96,14 @@ function Home() {
 
       {/* Feature section with grid */}
       <AnimatedCard
-        threshold={.50}
-        activeClassName="transition-all duration 1400 ease-in transform opacity-1"
-        inactiveClassName="transition-all duration 1400 ease-in transform opacity-0"
+        threshold={0.25}
+        activeClassName="transition-all duration-500 ease-in transform opacity-1"
+        inactiveClassName="transition-all duration-500 ease-in transform opacity-0"
       >
         <div className="relative rounded-t-lg bg-white py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-            <p className="mt-2 text-3xl font-extrabold text-blue-400 tracking-tight sm:text-4xl">
-              PART OF THE CREW PART OF THE SHIP
+            <p className="mt-2 text-4xl font-extrabold text-blue-400 tracking-tight sm:text-4xl">
+              Part of the crew, Part of the ship
             </p>
             <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
               Phasellus lorem quam molestie id quisque diam aenean nulla in.
@@ -109,10 +124,10 @@ function Home() {
                             />
                           </span>
                         </div>
-                        <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">
+                        <h3 className="mt-8 text-xl font-medium text-gray-900 tracking-tight">
                           {feature.name}
                         </h3>
-                        <p className="mt-5 text-base text-gray-500">
+                        <p className="mt-5 text-lg text-gray-500">
                           {feature.description}
                         </p>
                       </div>
@@ -145,10 +160,11 @@ function Home() {
               Make your way to BOA
             </p>
             <p className="mt-3 text-lg text-white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et,
-              egestas tempus tellus etiam sed. Quam a scelerisque amet
-              ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat
-              quisque ut interdum tincidunt duis.
+              Come join us for the for the first ever season of Charlotte FC.
+              with 17 home games, there are plenty of opportunities to fall in
+              love with Charlotte FC and the gameday experience. Click the links
+              below to learn more about the team or to purchase single game
+              tickets.
             </p>
             <div className="mt-8">
               <div className="inline-flex space-x-2 rounded-md shadow">
@@ -195,10 +211,10 @@ function Home() {
               The Queen City
             </p>
             <p className="mt-3 text-lg text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et,
-              egestas tempus tellus etiam sed. Quam a scelerisque amet
-              ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat
-              quisque ut interdum tincidunt duis.
+              Whether you're in town just for the game or are a local who has
+              lived here for years, there's alwasy something new going on in
+              Charlotte. Click the link below to find out about local events,
+              restaurants, and places to stay around the QC.
             </p>
             <div className="mt-8">
               <div className="inline-flex rounded-md shadow">
