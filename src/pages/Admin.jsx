@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 const people = [
   {
@@ -20,7 +20,7 @@ const tabs = [
   { name: "Events", value: "events", current: false },
 ];
 
-function Control() {
+function Admin() {
   const initialState = {
     name: "",
     title: "",
@@ -33,6 +33,10 @@ function Control() {
 
   const [currentTab, setCurrentTab] = useState("members");
   const [formData, setFormData] = useState(initialState);
+
+  useEffect(()=>{
+    console.log("yo")
+  },[])
 
   const handleTab = (e) => {
     e.preventDefault();
@@ -56,7 +60,7 @@ function Control() {
     };
     axios
       .post("http://localhost:3001/create-event", reqData)
-      .then((response) => response.json());
+      .then((response) => console.log("Event Created: ", response.data));
   };
 
   function classNames(...classes) {
@@ -65,6 +69,7 @@ function Control() {
 
   const renderSwitch = (tab) => {
     switch (tab) {
+      default:
       case "members":
         return (
           <table className="min-w-full divide-y divide-gray-200">
@@ -118,12 +123,11 @@ function Control() {
                     {person.seating}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a
-                      href="#"
+                    <button
                       className="text-indigo-600 hover:text-indigo-900"
                     >
                       Edit
-                    </a>
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -310,65 +314,27 @@ function Control() {
               <button
                 id="dropdownButton"
                 data-dropdown-toggle="dropdown"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 type="button"
               >
                 Dropdown button{" "}
                 <svg
-                  class="ml-2 w-4 h-4"
+                  className="ml-2 w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M19 9l-7 7-7-7"
                   ></path>
                 </svg>
               </button>
 
-              <div
-                id="dropdown"
-                class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-              >
-                <ul class="py-1" aria-labelledby="dropdownButton">
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Earnings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Sign out
-                    </a>
-                  </li>
-                </ul>
-              </div>
+             
               <div className=" p-4 flex flex-col border-2 border-gray-100">
                 <p className="text-lg font-bold">Event 1</p>
                 <form>
@@ -401,23 +367,8 @@ function Control() {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <div>
-              <div className="sm:hidden">
-                <label htmlFor="tabs" className="sr-only">
-                  Select a tab
-                </label>
-                {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
-                <select
-                  id="tabs"
-                  name="tabs"
-                  className="block w-full focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
-                  defaultValue={tabs.find((tab) => tab.current).name}
-                >
-                  {tabs.map((tab) => (
-                    <option key={tab.name}>{tab.name}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="hidden sm:block">
+              
+              <div className="block">
                 <div className="border-b border-gray-200">
                   <nav className="-mb-px flex" aria-label="Tabs">
                     {tabs.map((tab) => (
@@ -427,9 +378,9 @@ function Control() {
                         value={tab.value}
                         className={classNames(
                           currentTab === tab.value
-                            ? "border-blue-500 text-blue-600"
+                            ? "border-black text-white"
                             : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
-                          "w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm bg-white rounded-t-lg"
+                          "w-1/2 py-4 px-1 text-center border-b-2 font-medium text-sm bg-blue-300 rounded-t-lg"
                         )}
                         aria-current={tab.current ? "page" : undefined}
                       >
@@ -448,4 +399,4 @@ function Control() {
   );
 }
 
-export default Control;
+export default Admin;

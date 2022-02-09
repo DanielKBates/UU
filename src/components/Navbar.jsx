@@ -8,9 +8,9 @@ import { navbarItems } from "./nav";
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [dir, setDir] = useState(1);
-  const handleMobileMenu = () => {
-    setMobileMenu(!mobileMenu);
-  };
+  // const handleMobileMenu = () => {
+  //   setMobileMenu(!mobileMenu);
+  // };
   const location = useLocation();
 
   const handleNavScroll = () => {
