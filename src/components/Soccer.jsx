@@ -17,107 +17,7 @@ const teams = [
     name: "Atlanta FC",
     record: "0 - 0 - 0",
     image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Columbus",
-    record: "0 - 0 - 0",
-    image: "https://via.placeholder.com/150",
-  },
+  }
 ];
 
 function Soccer() {
@@ -186,7 +86,7 @@ function Soccer() {
   return (
     <div>
       {" "}
-      <div className="hidden md:flex flex-col w-full">
+      <div className="hidden md:flex flex-col w-full h-full">
         <div className="w-full bg-white bg-opacity-90 p-3 rounded-lg">
           {/* Tabs */}
           <div>

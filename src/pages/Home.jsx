@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   CalendarIcon,
@@ -8,7 +7,7 @@ import {
 } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
 
-import Events from "../components/Events";
+import FeatEvent from "../components/FeatEvent";
 import Signup from "../pages/Signup";
 import AnimatedCard from "../components/AnimatedCard";
 const features = [
@@ -33,27 +32,10 @@ const features = [
 ];
 
 function Home() {
-  const [event, setEvent] = useState({})
-  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const fetchData = async () =>{
-      setLoading(true);
-      try {
-        const {data: res} = await axios.get('http://localhost:3001/events');
-        setEvent(res);
-      } catch (error) {
-        console.error(error.message);
-      }
-      setLoading(false);
-    }
-
-    fetchData();
-  }, []);
 
   return (
     <main className="pb-2 lg:pb-4 xl:pb-12 pt-28 md:pt-36">
-      {/* Splash CTA - probably separate into own component *BE* */}
       <div className="pb-12 px-12 pt-2 rounded-lg bg-black sm:pt-16 lg:pt-8 lg:pb-14">
         <div className="mx-auto lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 rounded-xl">
@@ -92,7 +74,7 @@ function Home() {
       </div>
 
       {/* Events */}
-      <Events />
+      <FeatEvent />
 
       {/* Feature section with grid */}
       <AnimatedCard
@@ -102,32 +84,32 @@ function Home() {
       >
         <div className="relative rounded-t-lg bg-white py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-            <p className="mt-2 text-4xl font-extrabold text-blue-400 tracking-tight sm:text-4xl">
-              Part of the crew, Part of the ship
+            <p className="mt-2 text-4xl font-extrabold text-blue-400  sm:text-6xl">
+              Part of the ship, Part of the crew
             </p>
-            <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
+            {/* <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
               Phasellus lorem quam molestie id quisque diam aenean nulla in.
               Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend
               condimentum id viverra nulla.
-            </p>
-            <div className="mt-12">
+            </p> */}
+            <div className=" mt-14 md:mt-32">
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {features.map((feature) => (
                   <div key={feature.name} className="pt-6">
                     <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
                       <div className="-mt-6">
                         <div>
-                          <span className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-md shadow-lg">
+                          <span className="inline-flex items-center justify-center p-3 bg-teal-300 rounded-md shadow-lg">
                             <feature.icon
-                              className="h-6 w-6 text-white"
+                              className="h-10 w-10 text-white"
                               aria-hidden="true"
                             />
                           </span>
                         </div>
-                        <h3 className="mt-8 text-xl font-medium text-gray-900 tracking-tight">
+                        <h3 className="mt-8 text-2xl font-medium text-blue-400 tracking-tight">
                           {feature.name}
                         </h3>
-                        <p className="mt-5 text-lg text-gray-500">
+                        <p className="mt-5 text-xl text-gray-700">
                           {feature.description}
                         </p>
                       </div>
@@ -198,8 +180,9 @@ function Home() {
         <div className="relative h-56  sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
           <img
             className="w-full h-full object-cover"
-            src="/assets/images/charlotte.jpeg"
+            src="https://tekjumpbucket.s3.amazonaws.com/AdobeStock_460921344.jpeg"
             alt=""
+            loading="lazy"
           />
         </div>
         <div className="relative mx-auto max-w-md px-4 py-12 sm:max-w-7xl sm:px-6 sm:py-20 md:py-28 lg:px-8 lg:py-32">

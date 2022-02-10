@@ -3,30 +3,26 @@ import React from "react";
 const people = [
   {
     name: "Lucas Barnhardt",
-    role: "Co-Founder / President",
-    imageUrl:
-      "/assets/images/lucas.jpg",
+    role: "Founder / President",
+    imageUrl: "/assets/images/lucas.jpg",
     email: "lucasbarnhardt.uptownultras@gmail.com",
   },
   {
     name: "Wes Watts",
     role: "Event Planning",
-    imageUrl:
-      "/assets/images/wes.jpg",
+    imageUrl: "/assets/images/wes.jpg",
     email: "email@email.com",
   },
   {
-    name: "Sean Gartlet",
+    name: "Sean Gartley",
     role: "Co-Founder/ Vice President",
-    imageUrl:
-      "/assets/images/sean.jpg", 
+    imageUrl: "/assets/images/sean.jpg",
     email: "email@email.com",
   },
   {
     name: "Charles Haddock",
-    role: "Co-Founder ",
-    imageUrl:
-      "/assets/images/charlesH.jpg",
+    role: " Brand Exposure ",
+    imageUrl: "/assets/images/charlesH.jpg",
     email: "email@email.com",
   },
 ];
@@ -46,14 +42,13 @@ function About() {
               About Us
             </h2>
             <p className="text-xl text-gray-500">
-              We are a social group of all types of soccer fans that are commited to celebrating, supporting, and motivating our team. We are inclusive of all peoples and we
-              are dedicated to strengthening our community and our team.
+              We are a social group of all types of soccer fans that are
+              commited to celebrating, supporting, and motivating our team. We
+              are inclusive of all peoples and we are dedicated to strengthening
+              our community and our team.
             </p>
           </div>
-          <ul
-            role="list"
-            className="mx-auto grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 md:gap-x-6 lg:max-w-5xl lg:gap-x-8 lg:gap-y-12 xl:grid-cols-6"
-          >
+          <ul className="mx-auto w-11/12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 md:gap-x-6 lg:max-w-5xl lg:gap-x-8 lg:gap-y-12 xl:grid-cols-6">
             {people.map((person) => (
               <li key={person.name}>
                 <div className="space-y-4">
@@ -65,7 +60,7 @@ function About() {
                   <div className="space-y-2">
                     <div className="text-xs font-medium lg:text-sm">
                       <h3>{person.name}</h3>
-                      <p className="text-indigo-600">{person.role}</p>
+                      <p className="text-blue-600">{person.role}</p>
                       {/* <p className="text-gray-400">{person.email}</p> */}
                     </div>
                   </div>
@@ -74,8 +69,14 @@ function About() {
             ))}
           </ul>
         </div>
-        <h1 className="text-3xl">Contact us</h1>
-        <p>email us at s;ldnfiwnefjnwerfnj</p>
+        <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-blue-500 mt-8">
+            Contact Us
+          </h2>
+          <p className="text-xl text-gray-500">
+            Email us at UptownUltras@gmail.com
+          </p>
+        </div>
       </div>
     </div>
   );

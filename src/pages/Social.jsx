@@ -2,17 +2,18 @@ import React from "react";
 
 function Social() {
   return (
-    <>
+    <div>
       <h1 className="pt-32 pb-6 font-rockSalt text-blue-400 text-4xl mx-auto w-1/4">
         {" "}
         Check out our social medias!
       </h1>
-      <div className=" flex flex-row justify-around">
-        <div className="flex flex-col w-1/4 pb-6 rounded-lg">
-          <img src="assets/images/image_1.jpg" />
-          <div className=" flex flex-col bg-gray-50 p-12">
+      <div className="flex flex-row md:grid md:grid-cols-3 md:gap-4">
+        {/* FB */}
+        <div className="flex flex-col w-full pb-6 ">
+          <img className="rounded-t-lg w-100" src="assets/images/image_1.jpg" />
+          <div className=" flex flex-col bg-gray-50 p-8 rounded-b-lg">
             <svg
-              className="w-10 mx-auto mb-2 "
+              className="w-10 mx-auto mb-2 text-blue-500"
               width={18}
               role="img"
               viewBox="0 0 24 24"
@@ -21,16 +22,17 @@ function Social() {
               <title>Facebook</title>
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
             </svg>
-            <p>
-              <a className="text-blue-400">Follow us on Facebook</a>. Best for finding out about past and future Uptown Ultra Events!
+            <p className="text-lg">
+              <a href="https://www.facebook.com/UptownUltras/" className="text-blue-400">Follow us on Facebook</a>. Best for
+              finding out about past and future Uptown Ultra Events!
             </p>
           </div>
         </div>
-        {/* Insta */}
-        <div className="flex flex-col w-1/4 pb-6 rounded-lg">
-          <img src="assets/images/image_2.jpg" />
 
-          <div className=" flex flex-col bg-gray-50 p-12">
+        {/* Insta */}
+        <div className="flex flex-col w-full pb-6 ">
+          <img className="rounded-t-lg" src="assets/images/image_2.jpg" />
+          <div className=" flex flex-col rounded-b-lg bg-gray-50 p-12">
             <svg
               class="w-10 mx-auto mb-2"
               id="insta-logo"
@@ -45,32 +47,33 @@ function Social() {
 
               <path
                 id="XMLID_81_"
-                fill="#555"
+                fill="#666"
                 d="M275.517,133C196.933,133,133,196.933,133,275.516 s63.933,142.517,142.517,142.517S418.034,354.1,418.034,275.516S354.101,133,275.517,133z M275.517,362.6 c-48.095,0-87.083-38.988-87.083-87.083s38.989-87.083,87.083-87.083c48.095,0,87.083,38.988,87.083,87.083 C362.6,323.611,323.611,362.6,275.517,362.6z"
               />
-
               <circle
                 id="XMLID_83_"
-                fill="#555"
+                fill="#444"
                 cx="418.306"
                 cy="134.072"
                 r="34.149"
               />
             </svg>
-            <p>
-              <a className="text-blue-400">Check out our Instagram </a>. Stay up to date on Uptown Ultra specific information and see how we cheer on our team! Our most active social media!
+            <p className="text-lg">
+              <a href="https://www.instagram.com/uptownultras/" className="text-blue-400">Check out our Instagram </a>. Stay up
+              to date on Uptown Ultra specific information and see how we cheer
+              on our team! Our most active social media!
             </p>
           </div>
         </div>
-        {/* twitter */}
-        <div className="flex flex-col w-1/4 pb-6 rounded-lg">
-          <img src="assets/images/image_4.jpg" />
 
-          <div className=" flex flex-col bg-gray-50 p-12">
+        {/* twitter */}
+        <div className="flex flex-col w-full pb-6">
+          <img className="rounded-t-lg" src="assets/images/image_4.jpg" />
+<div className=" flex flex-col rounded-b-lg bg-gray-50 p-12">
             <svg
               viewBox="328 355 335 276"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-10 mx-auto mb-2"
+              className="w-10 mx-auto mb-2 "
               id="twitter-logo"
             >
               <path
@@ -92,14 +95,15 @@ function Social() {
     Z"
               />
             </svg>
-            <p>
+            <p className="text-lg">
               {" "}
-              <a className="text-blue-400">Visit our Twitter</a>. Best for keeping up with Charlotte FC and Support Group News.
+              <a href="https://twitter.com/UltrasUptown" className="text-blue-400">Visit our Twitter</a>. Best for
+              keeping up with Charlotte FC and Support Group News.
             </p>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

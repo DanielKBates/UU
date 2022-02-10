@@ -12,6 +12,7 @@ import Social from "./pages/Social";
 import Admin from "./pages/Admin";
 import EventsPage from "./pages/EventsPage";
 import Event from "./pages/Event";
+import TOS from "./pages/TOS"
     
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Route exact path="/social" element={<Social />} />  
             <Route exact path="/admin" element={<Admin />} />   
             <Route exact path="/events" element={<EventsPage />} />
-
+            <Route exact path = "/TOS" element = {<TOS />} />
             <Route exact path="/" element={<Home />} />
           </Routes>
         </div>

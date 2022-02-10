@@ -7,11 +7,16 @@ import { navbarItems, footerItems } from "./nav"
           <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
             {navbarItems.map((item) => (
               <div key={item.text} className="px-5 py-2">
-                <a href={item.href} className="text-base text-white hover:text-gray-900">
+                <a to={item.href} className="text-base text-white hover:text-gray-900">
                   {item.text}
                 </a>
               </div>
             ))}
+            <div  className="px-5 py-2">
+                <a href="/TOS" className="text-base text-white hover:text-gray-900">
+                  Terms and Conditions
+                </a>
+              </div>
           </nav>
           <div className="mt-8 flex justify-center space-x-6">
             {footerItems.map((item) => (
