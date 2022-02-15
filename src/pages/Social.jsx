@@ -24,7 +24,7 @@ function Social() {
             </svg>
             <p className="text-lg">
               <a href="https://www.facebook.com/UptownUltras/" className="text-blue-400">Follow us on Facebook</a>. Best for
-              finding out about past and future Uptown Ultra Events!
+              finding out about past and future Uptown Ultras Events!
             </p>
           </div>
         </div>
@@ -60,7 +60,7 @@ function Social() {
             </svg>
             <p className="text-lg">
               <a href="https://www.instagram.com/uptownultras/" className="text-blue-400">Check out our Instagram </a>. Stay up
-              to date on Uptown Ultra specific information and see how we cheer
+              to date on Uptown Ultras specific information and see how we cheer
               on our team! Our most active social media!
             </p>
           </div>
@@ -98,7 +98,7 @@ function Social() {
             <p className="text-lg">
               {" "}
               <a href="https://twitter.com/UltrasUptown" className="text-blue-400">Visit our Twitter</a>. Best for
-              keeping up with Charlotte FC and Support Group News.
+              keeping up with Charlotte FC and Supporter Group News.
             </p>
           </div>
         </div>

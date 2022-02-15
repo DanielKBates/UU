@@ -3,6 +3,9 @@ import axios from "axios";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import { format } from "date-fns";
+import { Controller, useForm } from "react-hook-form";
+import DatePicker from "react-datepicker";
 
 const people = [
   {
@@ -43,8 +46,11 @@ function Admin() {
   const [currentTab, setCurrentTab] = useState("members");
   const [formData, setFormData] = useState(initialState);
   const [eventList, setEventList] = useState([]);
-  const [memberList, setMemberList] = useState([])
+  const [memberList, setMemberList] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState({});
+  const [selectedMember, setSelectedMember] = useState({});
+
+  const { control, register, handleSubmit } = useForm();
 
   const fetchEventData = async () => {
     try {
@@ -59,8 +65,8 @@ function Admin() {
   const fetchMemberData = async () => {
     try {
       setLoading("loading");
-      const { data: res } = await axios.get("http://localhost:3001/member-list");
-      setEventList(res);
+      const res = await axios.get("http://localhost:3001/member-list");
+      setMemberList(res.data);
       setLoading("done");
     } catch (error) {
       console.error(error.message);
@@ -69,7 +75,7 @@ function Admin() {
 
   useEffect(() => {
     fetchEventData();
-    fetchMemberData()
+    fetchMemberData();
   }, []);
 
   const handleTab = (e) => {
@@ -141,15 +147,71 @@ function Admin() {
     window.alert("Event Edited!");
   };
 
+  const memberEditSubmit = async (data) => {
+    const bday = format(new Date(data.birthday), "dd MMMM yyyy");
+    const reqData = {
+      id: selectedMember._id,
+      fName: data.fName,
+      lName: data.lName,
+      seasonTix: data.seasonTix,
+      suppSection: data.suppSection,
+      email: data.email,
+      phone: data.phone,
+      tier: data.tier,
+      birthday: bday,
+      membership: data.membership,
+    };
+    console.log(reqData);
+    axios
+      .post("http://localhost:3001/edit-member", reqData)
+      .then(function (result) {
+        fetchMemberData();
+        setCurrentTab("members");
+      });
+  };
+
   const handleEventSelect = (e) => {
     console.log(e.target.value);
     const c = eventList.filter((event) => event.name === e.target.value)[0];
     setSelectedEvent(c);
   };
 
+  const handleMemberSelect = (e) => {
+    setSelectedMember({});
+    console.log(e.target.value);
+    const m = memberList.filter((member) => member.email === e.target.value);
+    setSelectedMember(m[0]);
+    setCurrentTab("memberEdit");
+  };
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const deleteMember = (e) => {
+    e.preventDefault();
+    if (window.confirm("Are you sure?")) {
+      axios
+        .post("http://localhost:3001/delete-member", { id: e.target.value })
+        .then(fetchMemberData());
+    }
+  };
+
+  const DOBValidate = (date) => {
+    var today = new Date();
+    var birthDate = new Date(date);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return (
+      <span className={age >= 21 ? "text-green-600" : "text-red-600"}>
+        {" "}
+        {age}{" "}
+      </span>
+    );
+  };
 
   const renderSwitch = (tab) => {
     switch (tab) {
@@ -181,21 +243,54 @@ function Admin() {
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
+                  DOB
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Season Tix
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
                   In Section
                 </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Tier
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Membership
+                </th>
                 <th scope="col" className="relative px-6 py-3">
-                  <span className="sr-only">Edit</span>
+                  <span className="sr-only">Update</span>
+                </th>
+                <th scope="col" className="relative px-6 py-3">
+                  <span className="sr-only">Delete</span>
                 </th>
               </tr>
             </thead>
             <tbody>
-              {people.map((person, personIdx) => (
+              {memberList.map((person, personIdx) => (
                 <tr
-                  key={person.email}
-                  className={personIdx % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                  key={person.id}
+                  className={
+                    person.membership === "pending"
+                      ? "bg-red-100"
+                      : personIdx % 2 === 0
+                      ? "bg-white"
+                      : "bg-gray-100"
+                  }
                 >
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {person.name}
+                    {person.fName} {person.lName}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {person.phone}
@@ -204,11 +299,38 @@ function Admin() {
                     {person.email}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {person.seating}
+                    {DOBValidate(
+                      format(new Date(person.birthday), "dd MMMM yyyy")
+                    )}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {person.seasonTix ? "Yes" : "No"}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {person.suppSection ? "Yes" : "No"}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {person.tier}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {person.membership}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <button className="text-indigo-600 hover:text-indigo-900">
-                      Edit
+                    <button
+                      className="text-indigo-600 hover:text-indigo-900"
+                      value={person.email}
+                      onClick={handleMemberSelect}
+                    >
+                      Update
+                    </button>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button
+                      className="text-red-500 hover:text-indigo-700"
+                      value={person._id}
+                      onClick={deleteMember}
+                    >
+                      Delete
                     </button>
                   </td>
                 </tr>
@@ -228,7 +350,8 @@ function Admin() {
                       New Event
                     </h3>
                     <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                      The newly created event will be added to the database, and the site immediately upon saving.
+                      The newly created event will be added to the database, and
+                      the site immediately upon saving.
                     </p>
                   </div>
 
@@ -690,6 +813,121 @@ function Admin() {
                 </form>
               </div>
             </div>
+          </div>
+        );
+      case "memberEdit":
+        return (
+          <div className="min-w-full h-full bg-white ">
+            <form
+              className="flex flex-col space-y-4 p-4"
+              onSubmit={handleSubmit(memberEditSubmit)}
+            >
+              <div>
+                <label htmlFor="fName">First Name</label>
+                <input
+                  id="fName"
+                  name="fName"
+                  defaultValue={selectedMember.fName}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("fName")}
+                />
+              </div>
+              <div>
+                <label htmlFor="lName">Last Name</label>
+                <input
+                  id="lName"
+                  name="lName"
+                  defaultValue={selectedMember.lName}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("lName")}
+                />
+              </div>
+              <div className="relative w-40">
+                <label htmlFor="birthday">DOB</label>
+
+                <Controller
+                  control={control}
+                  name="birthday"
+                  render={({ field }) => (
+                    <DatePicker
+                      selected={field.value}
+                      onChange={(date) => field.onChange(date)}
+                      nextMonthButtonLabel=">"
+                      previousMonthButtonLabel="<"
+                      popperClassName="react-datepicker-far-right"
+                    />
+                  )}
+                />
+              </div>
+              <div>
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  defaultValue={selectedMember.phone}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("phone")}
+                />
+              </div>
+              <div>
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  defaultValue={selectedMember.email}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("email")}
+                />
+              </div>
+              <div>
+                <label htmlFor="seasonTix">Season Tix (true or false)</label>
+                <input
+                  id="seasonTix"
+                  name="seasonTix"
+                  defaultValue={selectedMember.seasonTix}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("seasonTix")}
+                />
+              </div>
+              <div>
+                <label htmlFor="suppSection">Supporter Section (true or false)</label>
+                <input
+                  id="suppSection"
+                  name="suppSection"
+                  defaultValue={selectedMember.suppSection}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("suppSection")}
+                />
+              </div>
+              <div>
+                <label htmlFor="tier">Tier</label>
+                <input
+                  id="tier"
+                  name="tier"
+                  defaultValue={selectedMember.tier}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("tier")}
+                />
+              </div>
+              <div>
+                <label htmlFor="membership">Status</label>
+                <input
+                  id="membership"
+                  name="membership"
+                  defaultValue={selectedMember.membership}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                  {...register("membership")}
+                />
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="w-1/4 flex mx-auto justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-400 hover:bg-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Update
+                </button>
+              </div>
+            </form>
           </div>
         );
     }
