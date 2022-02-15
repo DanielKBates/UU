@@ -38,7 +38,7 @@ function Home() {
     <main className="pb-2 lg:pb-4 xl:pb-12 pt-28 md:pt-36">
       <div className="pb-12 px-12 pt-2 rounded-lg bg-black sm:pt-16 lg:pt-8 lg:pb-14">
         <div className="mx-auto lg:px-8">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 rounded-xl">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-6 rounded-xl">
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
               <div className="lg:py-24 ">
                 <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
@@ -59,10 +59,10 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-12 lg:m-0 lg:relative">
-              <div className="mx-auto max-w-md pb-10 px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
+            <div className="mt-20  w-full">
+              <div className="mx-auto flex flex-col max-w-md  px-4 sm:max-w-2xl sm:px-6 lg:px-0">
                 <img
-                  className="w-full rounded-md lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+                  className="w-full rounded-md  lg:h-full  "
                   src="/assets/images/cfc.jpg"
                   alt=""
                   loading="lazy"
