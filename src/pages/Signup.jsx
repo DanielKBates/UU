@@ -322,7 +322,7 @@ const Signup = () => {
                             By checking this, you agree to allow Uptown Ultras
                             to communicate with you via the given email.
                           </p>
-                          <Link target="_blank" to={"/TOS"}>
+                          <Link target="_blank" to={"/Terms"}>
                             <span className="text-blue-500">
                               Read our full Terms of Service here
                             </span>

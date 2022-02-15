@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TOS() {
+function Terms() {
   return (
     <div className="py-28 flex flex-col space-y-12 w-2/3 mx-auto bg-gray-100 p-6">
       <div>
@@ -433,4 +433,4 @@ function TOS() {
   );
 }
 
-export default TOS;
+export default Terms;
