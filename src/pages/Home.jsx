@@ -48,7 +48,7 @@ function Home() {
                   Charlotte FC's first MLS season!
                 </p>
                 <div className="mt-10 sm:mt-12 flex justify-center md:justify-start">
-                  <Link to="/signup" className="w-1/4">
+                  <Link to="/signup" className=" w-1/2 xl:w-1/4">
                     <button className="bg-blue-400 p-4 w-full font-bold text-white rounded-lg animate-fadeInLong">
                       Sign Up!
                     </button>
