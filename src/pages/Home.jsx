@@ -6,9 +6,7 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
-
 import FeatEvent from "../components/FeatEvent";
-import Signup from "../pages/Signup";
 import AnimatedCard from "../components/AnimatedCard";
 const features = [
   {
@@ -32,8 +30,6 @@ const features = [
 ];
 
 function Home() {
-
-
   return (
     <main className="pb-2 lg:pb-4 xl:pb-12 pt-28 md:pt-36">
       <div className="pb-12 px-12 pt-2 rounded-lg bg-black sm:pt-16 lg:pt-8 lg:pb-14">
@@ -52,10 +48,11 @@ function Home() {
                   Charlotte FC's first MLS season!
                 </p>
                 <div className="mt-10 sm:mt-12 flex justify-center md:justify-start">
-                  <Link to="/signup" element={Signup}></Link>
-                  <button className="bg-blue-400 p-4 w-1/4 font-bold text-white rounded-lg animate-fadeInLong">
-                    Sign Up!
-                  </button>
+                  <Link to="/signup" className="w-1/4">
+                    <button className="bg-blue-400 p-4 w-full font-bold text-white rounded-lg animate-fadeInLong">
+                      Sign Up!
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

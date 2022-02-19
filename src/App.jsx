@@ -13,6 +13,8 @@ import Admin from "./pages/Admin";
 import EventsPage from "./pages/EventsPage";
 import Event from "./pages/Event";
 import Terms from "./pages/Terms"
+import Login from "./components/Login";
+import WithAuth from "./components/withAuth";
     
 function App() {
   return (
@@ -26,9 +28,10 @@ function App() {
             <Route exact path="/about" element={<About />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/social" element={<Social />} />  
-            <Route exact path="/admin" element={<Admin />} />   
+            <Route exact path="/admin" element={WithAuth(Admin)} />   
             <Route exact path="/events" element={<EventsPage />} />
             <Route exact path = "/terms" element = {<Terms />} />
+            <Route exact path = "/login" element = {<Login />} />
             <Route exact path="/" element={<Home />} />
           </Routes>
         </div>

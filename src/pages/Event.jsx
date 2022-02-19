@@ -11,7 +11,7 @@ function Event() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3001/single-event/" + event
+          "https://uuexpress.herokuapp.com/api/events/single-event/" + event
         );
         setCurrentEvent(res.data);
       } catch (error) {
@@ -23,7 +23,7 @@ function Event() {
   }, []);
 
   return (
-    <div className="pt-28 pb-10">
+    <div className="pt-36 pb-10 ">
       
       <div className="flex flex-col md:flex-row w-full md:w-11/12 justify-between bg-white bg-opacity-50 rounded-lg">
         <div className="md:w-1/4">

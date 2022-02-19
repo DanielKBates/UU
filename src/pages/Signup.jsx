@@ -10,14 +10,12 @@ const Signup = () => {
     control,
     register,
     handleSubmit,
-    formState: { errors },
-    reset,
+    
   } = useForm();
 
   const [submitted, setSubmitted] = useState();
 
   const onSubmit = async (data) => {
-    console.log(data);
     const bday = format(new Date(data.birthday), "dd MMMM yyyy");
     const reqData = {
       fName: data.fName,
@@ -30,12 +28,13 @@ const Signup = () => {
       birthday: bday,
       membership: "pending",
     };
-    console.log(reqData);
     const result = await axios.post(
-      "http://localhost:3001/add-member",
+      "https://uuexpress.herokuapp.com/api/members/add-member",
       reqData
     );
-    if (result) setSubmitted(true);
+    if (result) {
+      setSubmitted(true);
+    }
   };
 
   const [seasonTix, setSeasonTix] = useState(0);
@@ -47,9 +46,19 @@ const Signup = () => {
     <>
       {submitted ? (
         <div className="w-11/12 mx-auto pt-24 flex flex-col space-y-4">
-          <h1 className="p-6 text-center text-4xl text-blue-400"> Thank you for signing up!</h1>
-          <p className=" text-xl">Welcome to the Uptown Ultras! We're excited to celebrate this historic season with you! You'll soon recieve an email to the provided email address with instructions on paying member dues. </p>
-          <img alt="Welcome to Uptown Ultras" src="/assets/images/altLogo1.png" />
+          <h1 className="p-6 text-center text-4xl text-blue-400">
+            {" "}
+            Thank you for signing up!
+          </h1>
+          <p className=" text-xl">
+            Welcome to the Uptown Ultras! We're excited to celebrate this
+            historic season with you! You'll soon recieve an email to the
+            provided email address with instructions on paying member dues.{" "}
+          </p>
+          <img
+            alt="Welcome to Uptown Ultras"
+            src="/assets/images/altLogo1.png"
+          />
         </div>
       ) : (
         <div className="min-h-full pt-12 xl:pt-20 flex">
@@ -139,14 +148,14 @@ const Signup = () => {
                           <Controller
                             control={control}
                             name="birthday"
-                            rules={{required:true}}
+                            rules={{ required: true }}
                             render={({ field }) => (
                               <DatePicker
                                 selected={field.value}
                                 onChange={(date) => field.onChange(date)}
                                 nextMonthButtonLabel=">"
                                 previousMonthButtonLabel="<"
-                                popperClassName="react-datepicker-right"
+                                popperClassName="react-datepicker-none"
                               />
                             )}
                           />

@@ -1,19 +1,23 @@
 export const navbarItems = [
     {
         text: "Home",
-        href: "/"
+        href: "/",
+        key: "1"
     },
     {
         text: "Events",
-        href:"/events"
+        href:"/events",
+        key: "2"
     },
     {
         text: "About",
-        href:"/about"
+        href:"/about",
+        key: "3"
     },
     {
         text: "Social",
-        href: "/social"
+        href: "/social",
+        key:"4"
     },
     
    

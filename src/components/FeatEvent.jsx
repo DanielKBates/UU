@@ -3,15 +3,14 @@ import axios from "axios";
 import Soccer from "./Soccer";
 import { Link } from "react-router-dom";
 
-function FeatEvent({ imagePath, title, path, desc }) {
+function FeatEvent() {
   const initialState = { imagePath: "", title: "", path: "", desc: "" };
   const [event, setEvent] = useState(initialState);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: res } = await axios.get("http://localhost:3001/featured");
-        console.log(res);
+        const { data: res } = await axios.get("https://uuexpress.herokuapp.com/api/events/featured");
         setEvent(res);
       } catch (error) {
         console.error(error.message);
@@ -41,7 +40,7 @@ function FeatEvent({ imagePath, title, path, desc }) {
               </h2>
             </Link>
             <p className="p-2 text-lg">
-              {event.desc.length > 200
+              {event.desc?.length > 200
                 ? event.desc.substring(0, 200) + "..."
                 : event.desc}
             </p>

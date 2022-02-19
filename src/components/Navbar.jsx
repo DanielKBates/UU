@@ -66,7 +66,7 @@ const Navbar = () => {
                 <div className="flex space-x-4">
                   {navbarItems.map((item) => (
                     <NavLink
-                      key={item.text}
+                      key={item.key}
                       to={item.href}
                       className={({ isActive }) =>
                         `px-3 py-2 rounded-md text-lg uppercase font-medium ${
@@ -111,7 +111,7 @@ const Navbar = () => {
               {navbarItems.map((item) => (
                 <Disclosure.Button>
                   <NavLink
-                    key={item.text}
+                    key={item.key}
                     to={item.href}
                     className={({ isActive }) =>
                       `pl-3 py-2 rounded-md text-md font-medium uppercase ${

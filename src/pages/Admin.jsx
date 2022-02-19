@@ -7,30 +7,11 @@ import { format } from "date-fns";
 import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 
-const people = [
-  {
-    name: "Jane Cooper",
-    phone: "7041234567",
-    seating: "Yes",
-    email: "jane.cooper@example.com",
-  },
-  {
-    name: "Cody Fisher",
-    phone: "9101234567",
-    seating: "No",
-    email: "cody.fisher@example.com",
-  },
-];
-
 const tabs = [
   { name: "Members", value: "members", current: true },
   { name: "Events", value: "events", current: false },
 ];
 
-const eventOptions = [
-  { text: "Yes", value: true },
-  { text: "No", value: false },
-];
 const initialState = {
   name: "",
   title: "",
@@ -41,6 +22,7 @@ const initialState = {
   imagePath: "",
   featured: false,
 };
+
 function Admin() {
   const [loading, setLoading] = useState("loading");
   const [currentTab, setCurrentTab] = useState("members");
@@ -52,10 +34,40 @@ function Admin() {
 
   const { control, register, handleSubmit } = useForm();
 
+  // const pingSecret = async () => {
+  //   const data = await axios.get("https://uuexpress.herokuapp.com/api/admin/secret", {});
+    
+  // };
+
+  const handleFeatChange = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await axios.post(
+        "https://uuexpress.herokuapp.com/api/events/remove-featured"
+      );
+      const res =
+        data &&
+        (await axios.post(
+          "https://uuexpress.herokuapp.com/api/events/remove-featured",
+          selectedEvent._id
+        ));
+      // setSelectedEvent(res);
+      console.log(res);
+      const addRes =
+        res &&
+        (await axios.post("https://uuexpress.herokuapp.com/api/events/add-featured", {
+          id: selectedEvent._id,
+        }));
+      console.log(addRes);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const fetchEventData = async () => {
     try {
       setLoading("loading");
-      const { data: res } = await axios.get("http://localhost:3001/events");
+      const { data: res } = await axios.get("https://uuexpress.herokuapp.com/api/events");
       setEventList(res);
       setLoading("done");
     } catch (error) {
@@ -65,18 +77,15 @@ function Admin() {
   const fetchMemberData = async () => {
     try {
       setLoading("loading");
-      const res = await axios.get("http://localhost:3001/member-list");
+      const res = await axios.get(
+        "https://uuexpress.herokuapp.com/api/members/member-list"
+      );
       setMemberList(res.data);
       setLoading("done");
     } catch (error) {
       console.error(error.message);
     }
   };
-
-  useEffect(() => {
-    fetchEventData();
-    fetchMemberData();
-  }, []);
 
   const handleTab = (e) => {
     e.preventDefault();
@@ -87,7 +96,9 @@ function Admin() {
     e.preventDefault();
     if (window.confirm("Are you sure?")) {
       axios
-        .post("http://localhost:3001/delete-event", { id: selectedEvent._id })
+        .post("https://uuexpress.herokuapp.com/api/events/delete-event", {
+          id: selectedEvent._id,
+        })
         .then((response) => {
           console.log("Event Deleted: ", response.data);
           setSelectedEvent(initialState);
@@ -117,7 +128,7 @@ function Admin() {
       featured: formData.featured,
     };
     axios
-      .post("http://localhost:3001/create-event", reqData)
+      .post("https://uuexpress.herokuapp.com/api/events/create-event", reqData)
       .then((response) => {
         console.log("Event Created: ", response.data);
         setEventList([...eventList, response.data]);
@@ -138,12 +149,14 @@ function Admin() {
       featured: selectedEvent.featured,
       id: selectedEvent._id,
     };
-    axios.post("http://localhost:3001/edit-event", reqData).then((response) => {
-      console.log("Event Edited: ", response.data);
-      // setSelectedEvent(initialState)
+    axios
+      .post("https://uuexpress.herokuapp.com/api/events/edit-event", reqData)
+      .then((response) => {
+        console.log("Event Edited: ", response.data);
+        // setSelectedEvent(initialState)
 
-      fetchEventData();
-    });
+        fetchEventData();
+      });
     window.alert("Event Edited!");
   };
 
@@ -163,7 +176,7 @@ function Admin() {
     };
     console.log(reqData);
     axios
-      .post("http://localhost:3001/edit-member", reqData)
+      .post("https://uuexpress.herokuapp.com/api/events/edit-member", reqData)
       .then(function (result) {
         fetchMemberData();
         setCurrentTab("members");
@@ -192,7 +205,9 @@ function Admin() {
     e.preventDefault();
     if (window.confirm("Are you sure?")) {
       axios
-        .post("http://localhost:3001/delete-member", { id: e.target.value })
+        .post("https://uuexpress.herokuapp.com/api/events/delete-member", {
+          id: e.target.value,
+        })
         .then(fetchMemberData());
     }
   };
@@ -507,34 +522,6 @@ function Admin() {
                   </div>
                 </div>
               </div>
-              <div>
-                <p className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                  Do you want to make this the new featured event?(Required!)
-                </p>
-                <fieldset className="mt-4 ">
-                  <legend className="sr-only">Featured Event</legend>
-                  <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                    {eventOptions.map((option) => (
-                      <div key={option.value} className="flex items-center">
-                        <input
-                          id={"o-" + option.value}
-                          name="featured"
-                          type="radio"
-                          className="focus:ring-blue-400 h-4 w-4 text-blue-400 border-gray-300"
-                          onClick={handleInputChange}
-                          value={option.value}
-                        />
-                        <label
-                          htmlFor={option.text}
-                          className="ml-3 block text-sm font-medium text-gray-700"
-                        >
-                          {option.text}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </fieldset>
-              </div>
               <button
                 onClick={handleFormSubmit}
                 className="p-4 bg-blue-400 text-white rounded-md w-1/6 mx-auto"
@@ -764,52 +751,30 @@ function Admin() {
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <p className="text-sm leading-5 text-gray-500">
-                      Do you want to make this the new featured event?
-                      (Required!)
-                    </p>
-                    <fieldset className="mt-4">
-                      <legend className="sr-only">Featured Event</legend>
-                      <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                        {eventOptions.map((option) => (
-                          <div key={option.value} className="flex items-center">
-                            <input
-                              id={"o-" + option.value}
-                              name="featured"
-                              type="radio"
-                              className="focus:ring-blue-400 h-4 w-4 text-blue-400 border-gray-300"
-                              onClick={handleEditChange}
-                              value={option.value}
-                              defaultValue={selectedEvent.featured}
-                            />
-                            <label
-                              htmlFor={option.text}
-                              className="ml-3 block text-sm font-medium text-gray-700"
-                            >
-                              {option.text}
-                            </label>
-                          </div>
-                        ))}
-                      </div>
-                    </fieldset>
-                  </div>
-                  <button
-                    onClick={handleEditSubmit}
-                    className="p-4 bg-blue-400 text-white rounded-md w-1/6 mx-auto"
-                  >
-                    Save Edits
-                  </button>{" "}
-                  {selectedEvent ? (
+                  <div className="flex flex-row gap-x-4">
+                    <button
+                      onClick={handleEditSubmit}
+                      className="p-4 bg-blue-400 text-white rounded-md w-1/6 "
+                    >
+                      Save Edits
+                    </button>{" "}
                     <button
                       onClick={handleDeleteEvent}
-                      className="p-4 bg-red-500 text-white rounded-md w-1/6 mx-auto"
+                      className="p-4 bg-red-500 text-white rounded-md w-1/6 "
                     >
                       Delete Event
                     </button>
-                  ) : (
-                    ""
-                  )}
+                    <button
+                      onClick={handleFeatChange}
+                      className={
+                        selectedEvent.featured === false &&
+                        ("p-4 bg-green-500 text-white rounded-md w-1/6 " ||
+                          "hidden")
+                      }
+                    >
+                      Make Feautured
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -890,7 +855,9 @@ function Admin() {
                 />
               </div>
               <div>
-                <label htmlFor="suppSection">Supporter Section (true or false)</label>
+                <label htmlFor="suppSection">
+                  Supporter Section (true or false)
+                </label>
                 <input
                   id="suppSection"
                   name="suppSection"
@@ -932,6 +899,13 @@ function Admin() {
         );
     }
   };
+
+  useEffect(() => {
+    // pingSecret();
+    fetchEventData();
+    fetchMemberData();
+  }, []);
+
   return loading === "loading" ? (
     <p>Loading...</p>
   ) : (
