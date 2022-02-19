@@ -56,7 +56,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-20  w-full">
+            <div className=" mt-12 xl:mt-20  w-full">
               <div className="mx-auto flex flex-col max-w-md  px-4 sm:max-w-2xl sm:px-6 lg:px-0">
                 <img
                   className="w-full rounded-md  lg:h-full  "
