@@ -25,7 +25,7 @@ function Event() {
     <div className="pt-36 pb-10 ">
       
       <div className="flex flex-col md:flex-row w-full md:w-11/12 justify-between bg-white bg-opacity-50 rounded-lg">
-        <div className="w-1/3">
+        <div className="w-1/2">
           <img
             src={currentEvent.imagePath}
             className=" rounded-l-lg"
