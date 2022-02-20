@@ -24,11 +24,11 @@ function App() {
       <div className="custom-bg">
         <div className="w-11/12 md:w-5/6 xl:2/3 mx-auto ">
           <Routes>
-            <Route exact path="/events/:event" element={<Event />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/social" element={<Social />} />  
             <Route exact path="/admin" element={WithAuth(Admin)} />   
+            <Route exact path="/events/:event" element={<Event />} />
             <Route exact path="/events" element={<EventsPage />} />
             <Route exact path = "/terms" element = {<Terms />} />
             <Route exact path = "/login" element = {<Login />} />
