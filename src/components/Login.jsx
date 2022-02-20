@@ -25,7 +25,7 @@ function Login(props) {
         if (res.status === 200) {
           setFormData({ username: "", password: "" });
           console.log("Logged In");
-          navigate("/control");
+          navigate("/admin");
         } else {
           const error = new Error(res.error);
           throw error;

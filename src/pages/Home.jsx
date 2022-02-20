@@ -59,7 +59,7 @@ function Home() {
             <div className=" mt-12 xl:mt-20  w-full">
               <div className="mx-auto flex flex-col max-w-md  px-4 sm:max-w-2xl sm:px-6 lg:px-0">
                 <img
-                  className="w-full rounded-md  lg:h-full  "
+                  className="w-full rounded-md lg:h-full border-4 border-blue-400"
                   src="/assets/images/cfc.jpg"
                   alt=""
                   loading="lazy"
@@ -192,7 +192,7 @@ function Home() {
             </p>
             <p className="mt-3 text-lg text-gray-300">
               Whether you're in town just for the game or are a local who has
-              lived here for years, there's alwasy something new going on in
+              lived here for years, there's always something new going on in
               Charlotte. Click the link below to find out about local events,
               restaurants, and places to stay around the QC.
             </p>

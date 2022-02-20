@@ -10,7 +10,7 @@ function Event() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "https://uuexpress.herokuapp.com/api/events/single-event/" + event
+          "https://uuexpress.herokuapp.com/api/events/event/" + event
         );
         setCurrentEvent(res.data);
       } catch (error) {
