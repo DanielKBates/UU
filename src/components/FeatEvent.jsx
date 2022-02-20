@@ -26,7 +26,7 @@ function FeatEvent() {
     //   in the array being mapped onto the smaller cards. We will need to implement an admin panel for CLIENT to be able to add events and thus update the site.
     <div className=" flex flex-row py-6 md:justify-between w-full">
       {/* Events */}
-      <div className="flex flex-col w-full ">
+      <div className="flex flex-col w-full md:w-1/2">
         <div className="bg-white bg-opacity-50 rounded-lg h-full">
           <img
             src={event.imagePath}
