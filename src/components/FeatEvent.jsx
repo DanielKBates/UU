@@ -24,10 +24,10 @@ function FeatEvent() {
   return (
     //   Events - we will be mapping over an array of events, with the most recent/important (events[0]) taking the largest card and the next 3-4 events
     //   in the array being mapped onto the smaller cards. We will need to implement an admin panel for CLIENT to be able to add events and thus update the site.
-    <div className=" flex flex-row py-6 justify-between w-full">
+    <div className=" flex flex-row py-6 md:justify-between w-full">
       {/* Events */}
-      <div className="flex flex-col w-full md:w-1/2">
-        <div className="bg-white bg-opacity-50 rounded-lg h-full ">
+      <div className="flex flex-col w-full ">
+        <div className="bg-white bg-opacity-50 rounded-lg h-full md:w-1/2">
           <img
             src={event.imagePath}
             width="100%"
