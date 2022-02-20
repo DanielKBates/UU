@@ -4,7 +4,6 @@ import axios from "axios";
 
 function Event() {
   let { event } = useParams();
-  console.log(event);
   const [currentEvent, setCurrentEvent] = useState({});
 
   useEffect(() => {

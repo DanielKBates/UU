@@ -65,8 +65,7 @@ function EventPage() {
                   </h2>
                   <p className="py-2">
                     Join us every home game to get together and prepare for the
-                    game in true tailgate fashion... lorem lorem lorem
-                    loremlorem loremlorem loremlorem lorem
+                    game in true tailgate fashion! We'll have games, and plenty of fellow fans to talk CFC with!
                   </p>
                 </div>
               </div>
