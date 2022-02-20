@@ -47,7 +47,7 @@ function FeatEvent() {
           </div>
         </div>
       </div>
-      <div className="w-5/12 ">
+      <div className="hidden md:w-5/12 ">
         <Soccer />
       </div>
     </div>
