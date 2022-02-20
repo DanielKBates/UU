@@ -32,14 +32,14 @@ const features = [
 function Home() {
   return (
     <main className="pb-2 lg:pb-4 xl:pb-12 pt-28 md:pt-36">
-      <div className="pb-12 px-12 pt-2 rounded-lg bg-black sm:pt-16 lg:pt-8 lg:pb-14">
+      <div className="pb-12 px-4 xl:px-12 pt-2 rounded-lg bg-black sm:pt-16 lg:pt-8 lg:pb-14">
         <div className="mx-auto lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-6 rounded-xl">
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
               <div className="lg:py-24 ">
                 <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="block animate-fadeIn">It's Time</span>
-                  <span className="pb-3 block animate-fadeInLong text-blue-400 sm:pb-5 font-rockSalt py-4 ">
+                  <span className="block animate-fadeIn text-center md:text-left">It's Time</span>
+                  <span className="pb-3 text-center md:text-left block animate-fadeInLong text-blue-400 sm:pb-5 font-rockSalt py-4 ">
                     To Get Hype
                   </span>
                 </h1>
@@ -48,7 +48,7 @@ function Home() {
                   Charlotte FC's first MLS season!
                 </p>
                 <div className="mt-10 sm:mt-12 flex justify-center md:justify-start">
-                  <Link to="/signup" className=" w-1/2 xl:w-1/4">
+                  <Link to="/signup" className=" w-1/2">
                     <button className="bg-blue-400 p-4 w-full font-bold text-white rounded-lg animate-fadeInLong">
                       Sign Up!
                     </button>
