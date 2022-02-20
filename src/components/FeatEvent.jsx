@@ -27,7 +27,7 @@ function FeatEvent() {
     <div className=" flex flex-row py-6 md:justify-between w-full">
       {/* Events */}
       <div className="flex flex-col w-full ">
-        <div className="bg-white bg-opacity-50 rounded-lg h-full md:w-1/2">
+        <div className="bg-white bg-opacity-50 rounded-lg h-full">
           <img
             src={event.imagePath}
             width="100%"
@@ -47,7 +47,7 @@ function FeatEvent() {
           </div>
         </div>
       </div>
-      <div className="hidden md:w-5/12 ">
+      <div className="hidden md:flex md:w-5/12 ">
         <Soccer />
       </div>
     </div>
