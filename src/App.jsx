@@ -28,7 +28,7 @@ function App() {
             <Route exact path="/about" element={<About />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/social" element={<Social />} />  
-            <Route exact path="/control" element={WithAuth(Admin)} />   
+            <Route exact path="/admin/control" element={WithAuth(Admin)} />   
             <Route exact path="/events" element={<EventsPage />} />
             <Route exact path = "/terms" element = {<Terms />} />
             <Route exact path = "/login" element = {<Login />} />
