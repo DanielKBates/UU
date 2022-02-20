@@ -379,7 +379,7 @@ const Signup = () => {
           <div className="hidden lg:block relative w-0 flex-1">
             <img
               className="absolute inset-0 h-full w-full object-cover"
-              src="/assets/images/altLogo2.png"
+              src="/assets/images/altLogo2.jpg"
               alt="Uptown Ultras"
             />
           </div>
