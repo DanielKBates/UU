@@ -28,7 +28,7 @@ const people = [
 ];
 function About() {
   return (
-    <div className="bg-white pt-16 ">
+    <div className="bg-white pt-24 ">
       <div className="flex justify-center items-start w-full ">
         <img
           src="/assets/images/altLogo1.png"

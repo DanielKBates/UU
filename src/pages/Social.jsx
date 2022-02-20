@@ -2,12 +2,12 @@ import React from "react";
 
 function Social() {
   return (
-    <div>
-      <h1 className="pt-32 pb-6 font-rockSalt text-blue-400 text-4xl mx-auto w-1/4">
+    <div className="pt-32">
+      <h1 className=" pb-6 font-rockSalt text-blue-400  text-xl md:text-4xl text-center ">
         {" "}
         Check out our social medias!
       </h1>
-      <div className="flex flex-row md:grid md:grid-cols-3 md:gap-4">
+      <div className="flex flex-col md:flex-row md:grid md:grid-cols-3 md:gap-4">
         {/* FB */}
         <div className="flex flex-col w-full pb-6 ">
           <img className="rounded-t-lg w-100" src="assets/images/image_1.jpg" />
