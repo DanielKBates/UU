@@ -47,7 +47,7 @@ function FeatEvent() {
           </div>
         </div>
       </div>
-      <div className="hidden md:flex md:w-5/12 ">
+      <div className="hidden md:inline-block md:w-5/12 ">
         <Soccer />
       </div>
     </div>
