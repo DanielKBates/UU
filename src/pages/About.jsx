@@ -33,7 +33,6 @@ function About() {
   useEffect(async () => {
     const res = await axios.get(
       "https://uuexpress.herokuapp.com/api/test/test-cookie",
-      { withCredentials: true }
     );
     console.log(res);
   }, []);
