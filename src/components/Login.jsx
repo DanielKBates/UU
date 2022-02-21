@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function Login(props) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   let navigate = useNavigate();
-  // axios.defaults.withCredentials = true;
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,7 +19,7 @@ function Login(props) {
           username: formData.username,
           password: formData.password,
         },
-        // { withCredentials: true }
+        { withCredentials: true }
       )
       .then(function (res) {
         if (res.status === 200) {

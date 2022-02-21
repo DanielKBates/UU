@@ -7,7 +7,7 @@ import Admin from "../pages/Admin";
 function WithAuth(props) {
   const [loading, setLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
-
+axios.defaults.withCredentials = true
   useEffect( () => {
     axios
       .get("https://uuexpress.herokuapp.com/api/admin/check-token")
