@@ -30,7 +30,7 @@ const people = [
 
 function About() {
   useEffect(async () => {
-    const res = axios.get("https://uuexpress.herokuapp.com/api/test");
+    const res = axios.get("https://uuexpress.herokuapp.com/api/test/test-cookie");
     console.log(res);
   }, []);
   return (
