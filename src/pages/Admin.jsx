@@ -314,6 +314,7 @@ function Admin() {
                     {person.email}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {person.birthday} |
                     {DOBValidate(
                       format(new Date(person.birthday), "dd MMMM yyyy")
                     )}
