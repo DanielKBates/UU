@@ -29,6 +29,7 @@ const people = [
 ];
 
 function About() {
+  axios.defaults.withCredentials = true
   useEffect(async () => {
     const res = await axios.get(
       "https://uuexpress.herokuapp.com/api/test/test-cookie",
