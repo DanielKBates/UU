@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 
 const people = [
   {
@@ -26,6 +27,11 @@ const people = [
     email: "email@email.com",
   },
 ];
+
+useEffect(async ()=>{
+  const res = axios.get("https://uuexpress.herokuapp.com/api/test")
+  console.log(res)
+}, [])
 function About() {
   return (
     <div className="bg-white pt-24 ">
