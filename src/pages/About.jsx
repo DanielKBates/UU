@@ -29,10 +29,10 @@ const people = [
 ];
 
 function About() {
-  axios.defaults.withCredentials = true
+  axios.defaults.withCredentials = true;
   useEffect(async () => {
     const res = await axios.get(
-      "https://uuexpress.herokuapp.com/api/test/test-cookie",
+      "https://uuexpress.herokuapp.com/api/test/test-cookie"
     );
     console.log(res);
   }, []);
@@ -51,10 +51,21 @@ function About() {
               About Us
             </h2>
             <p className="text-xl text-gray-500">
+              Founded in 2021, the Uptown Ultras started organically when two
+              friends Lucas Barnhardt and Sean Gartley realized that most of the
+              Charlotte FC fans they knew were in the supporters section and did
+              not have a group to affiliate with. We quickly formed a group and
+              worked to build the group we have here today.
+            </p>
+            <p className="text-xl text-gray-500">
               We are a social group of all types of soccer fans that are
               commited to celebrating, supporting, and motivating our team. We
               are inclusive of all peoples and we are dedicated to strengthening
               our community and our team.
+            </p>
+            <p className="text-xl text-gray-500">
+              If you're Charlotte FC's biggest fan, or someone new to soccer
+              fandom, there is a spot for you in the Ultras.
             </p>
           </div>
           <ul className="mx-auto w-11/12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 md:gap-x-6 lg:max-w-5xl lg:gap-x-8 lg:gap-y-12 xl:grid-cols-6">

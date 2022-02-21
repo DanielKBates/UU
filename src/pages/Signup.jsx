@@ -6,12 +6,7 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 
 const Signup = () => {
-  const {
-    control,
-    register,
-    handleSubmit,
-    
-  } = useForm();
+  const { control, register, handleSubmit } = useForm();
 
   const [submitted, setSubmitted] = useState();
 
@@ -61,7 +56,7 @@ const Signup = () => {
           />
         </div>
       ) : (
-        <div className="min-h-full pt-12 xl:pt-20 flex">
+        <div className="min-h-full pt-12 xl:pt-20 flex flex-col-reverse md:flex-row md:flex">
           <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
             <div className="mx-auto w-full max-w-sm lg:w-96">
               <div>
@@ -376,12 +371,51 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="hidden lg:block relative w-0 flex-1">
+          <div className="bg-white flex flex-col ">
             <img
-              className="absolute inset-0 h-full w-full object-cover"
+              className=" h-1/3 w-1/3 object-cover mx-auto"
               src="/assets/images/altLogo2.jpg"
               alt="Uptown Ultras"
             />
+            <div className="w-5/6 p-4 mx-auto ">
+              <h1 className=" text-2xl -mt-12 text-blue-400 text-center">
+                Uptown Tier - $30 annually
+              </h1>
+              <ul className="list-disc list-inside ">
+                <li> Voting rights in Uptown Ultras elections</li>
+                <li>Access to Uptown Ultras Member Discord</li>
+                <ul className="list-disc list-inside ml-4">
+                  <li>Includes Member Ticket Exchange</li>
+                </ul>
+                <li>Uptown Member Card</li>
+                <li>Access to Tailgate</li>
+                <li>Access to Member events throughout the year</li>
+                <li>Away Match Viewing Parties with Ultras specials</li>
+              </ul>
+              <h1 className=" text-2xl mt-8 text-blue-400 text-center">
+                Ultra Tier - $60 annually
+              </h1>     
+              <ul className="list-disc list-inside ">
+                <li> Voting rights in Uptown Ultras elections</li>
+                <li>Access to Uptown Ultras Member Discord</li>
+                <ul className="list-disc list-inside ml-4">
+                  <li>Includes Member Ticket Exchange</li>
+                </ul>
+                <li>Ultra Member Card</li>
+                <ul className="list-disc list-inside ml-4">
+                  <li>Offers select discounts at restaurants/bars in Charlotte</li>
+                  <li>Discount parking (33% off) at 1200 S Graham Street on matchdays</li>
+                </ul>
+                <li>Access to Tailgate</li>
+                <li>Access to Member events throughout the year</li>
+                <li>Away Match Viewing Parties with Ultras specials</li>
+                <li>Access to 20% off merch</li>
+                <li>Uptown Ultra Inaugural Shirt</li>
+                <ul className="list-disc list-inside ml-4">
+                  <li>(Or future Uptown Ultras merch if shirt is alredy purchased)</li>
+                </ul>
+              </ul>           
+            </div>
           </div>
         </div>
       )}{" "}

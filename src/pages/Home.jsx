@@ -140,7 +140,7 @@ function Home() {
             </p>
             <p className="mt-3 text-lg text-white">
               Come join us for the for the first ever season of Charlotte FC.
-              with 17 home games, there are plenty of opportunities to fall in
+              With 17 home games, there are plenty of opportunities to fall in
               love with Charlotte FC and the gameday experience. Click the links
               below to learn more about the team or to purchase single game
               tickets.
