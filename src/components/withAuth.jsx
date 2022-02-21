@@ -10,7 +10,7 @@ function WithAuth(props) {
 
   useEffect( () => {
     axios
-      .get("https://uuexpress.herokuapp.com/api/admin/check-token")
+      .post("https://uuexpress.herokuapp.com/api/admin/check-token")
       .then((res) => {
         if (res.status === 200) {
           setLoading(false);

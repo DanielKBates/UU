@@ -24,9 +24,7 @@ function Login(props) {
       .then(function (res) {
         if (res.status === 200) {
           // setFormData({ username: "", password: "" });
-          console.log(window.location)
           navigate("/admin");
-          console.log(window.location)
           console.log("Logged In");
         } else {
           const error = new Error(res.error);
