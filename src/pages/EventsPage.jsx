@@ -24,7 +24,6 @@ function EventPage() {
   const displayEvents = () => {
     const eCopy = events;
     eCopy.sort((b, a) => a.featured - b.featured);
-    console.log(eCopy);
     return eCopy.map((event) => (
       <div className="flex flex-col  mt-2 w-full h-fit md:w-5/12">
         <Link to={"/events" + event.path}>
