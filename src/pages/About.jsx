@@ -28,11 +28,11 @@ const people = [
   },
 ];
 
-useEffect(async ()=>{
-  const res = axios.get("https://uuexpress.herokuapp.com/api/test")
-  console.log(res)
-}, [])
 function About() {
+  useEffect(async () => {
+    const res = axios.get("https://uuexpress.herokuapp.com/api/test");
+    console.log(res);
+  }, []);
   return (
     <div className="bg-white pt-24 ">
       <div className="flex justify-center items-start w-full ">
