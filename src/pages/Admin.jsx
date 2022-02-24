@@ -176,7 +176,7 @@ function Admin() {
     };
     console.log(reqData);
     axios
-      .post("https://uuexpress.herokuapp.com/api/events/edit-member", reqData)
+      .post("https://uuexpress.herokuapp.com/api/events/edit-member/", reqData)
       .then(function (result) {
         fetchMemberData();
         setCurrentTab("members");
@@ -205,7 +205,7 @@ function Admin() {
     e.preventDefault();
     if (window.confirm("Are you sure?")) {
       axios
-        .post("https://uuexpress.herokuapp.com/api/events/delete-member", {
+        .post("https://uuexpress.herokuapp.com/api/events/delete-member/", {
           id: e.target.value,
         })
         .then(fetchMemberData());
