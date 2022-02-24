@@ -111,9 +111,7 @@ function Admin() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleEditChange = (e) => {
-    setSelectedEvent({ ...selectedEvent, [e.target.name]: e.target.value });
-  };
+ 
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -134,6 +132,17 @@ function Admin() {
         setEventList([...eventList, response.data]);
         setFormData(initialState);
       });
+  };
+
+  // Event Editing
+  const handleEventSelect = (e) => {
+    console.log(e.target.value);
+    const c = eventList.filter((event) => event.name === e.target.value)[0];
+    setSelectedEvent(c);
+  };
+
+  const handleEditChange = (e) => {
+    setSelectedEvent({ ...selectedEvent, [e.target.name]: e.target.value });
   };
 
   const handleEditSubmit = (e) => {
@@ -160,6 +169,7 @@ function Admin() {
     window.alert("Event Edited!");
   };
 
+  // member editing
   const memberEditSubmit = async (data) => {
     const bday = format(new Date(data.birthday), "dd MMMM yyyy");
     const reqData = {
@@ -179,15 +189,12 @@ function Admin() {
       .post("https://uuexpress.herokuapp.com/api/members/edit-member", reqData)
       .then(function (result) {
         fetchMemberData();
+        setSelectedMember({})
         setCurrentTab("members");
       });
   };
 
-  const handleEventSelect = (e) => {
-    console.log(e.target.value);
-    const c = eventList.filter((event) => event.name === e.target.value)[0];
-    setSelectedEvent(c);
-  };
+
 
   const handleMemberSelect = (e) => {
     const m = memberList.filter((member) => member.email === e.target.value);
