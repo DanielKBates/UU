@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login(props) {
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [loading, setLoading] = useState("waiting");
   let navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -12,6 +13,7 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading("loading")
     axios
       .post(
         "https://uuexpress.herokuapp.com/api/admin/authenticate",
@@ -23,9 +25,8 @@ function Login(props) {
       )
       .then(function (res) {
         if (res.status === 200) {
-          // setFormData({ username: "", password: "" });
+          setLoading("done")
           navigate("/admin");
-          console.log(res);
         } else {
           const error = new Error(res.error);
           throw error;
