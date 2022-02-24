@@ -190,8 +190,6 @@ function Admin() {
   };
 
   const handleMemberSelect = (e) => {
-    setSelectedMember({});
-    console.log(e.target.value);
     const m = memberList.filter((member) => member.email === e.target.value);
     setSelectedMember(m[0]);
     setCurrentTab("memberEdit");
