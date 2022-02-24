@@ -816,7 +816,7 @@ function Admin() {
                   name="birthday"
                   render={({ field }) => (
                     <DatePicker
-                      selected={field.value}
+                      selected={selectedMember.birthday}
                       onChange={(date) => field.onChange(date)}
                       nextMonthButtonLabel=">"
                       previousMonthButtonLabel="<"
