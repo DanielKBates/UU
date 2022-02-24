@@ -34,7 +34,7 @@ function FeatEvent() {
             className="m-auto cursor-pointer rounded-t-lg"
           />
           <div className="px-5 py-4 ">
-            <Link to="events/0k-charity">
+            <Link to={event.path}>
               <h2 className="cursor-pointer text-3xl text-blue-400 uppercase">
                 {event.title}
               </h2>
