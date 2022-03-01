@@ -195,7 +195,8 @@ function Admin() {
     setSelectedMember({ ...selectedMember, [e.target.name]: e.target.value });
   };
 
-  const memberEditSubmit = () => {
+  const memberEditSubmit = (e) => {
+    e.preventDefault();
     const bday = format(new Date(selectedMember.birthday), "dd MMMM yyyy");
     const reqData = {
       id: selectedMember._id,
@@ -312,7 +313,7 @@ function Admin() {
               </tr>
             </thead>
             <tbody>
-              {memberList.map((person, personIdx) => (
+              {sortedMembers.map((person, personIdx) => (
                 <tr
                   key={person.id}
                   className={
