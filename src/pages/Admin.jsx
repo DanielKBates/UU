@@ -842,7 +842,7 @@ function Admin() {
                   }
                   nextMonthButtonLabel=">"
                   previousMonthButtonLabel="<"
-                  popperClassName="react-datepicker-far-right"
+                  popperClassName="react-datepicker-none"
                 />
               </div>
               <div>
