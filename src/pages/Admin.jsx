@@ -829,6 +829,11 @@ function Admin() {
                 <label htmlFor="birthday">DOB</label>
                 <DatePicker
                   selected={parseISO(selectedMember.birthday)}
+                  onSelect={(date) =>
+                    setSelectedMember((b) => ({
+                      ...b,
+                      birthday: parseISO(date),
+                    }))}
                   onChange={(date) =>
                     setSelectedMember((b) => ({
                       ...b,
