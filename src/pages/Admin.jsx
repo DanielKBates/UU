@@ -96,7 +96,7 @@ function Admin() {
       .then((response) => {
         console.log("Event Created: ", response.data);
         setEventList([...eventList, response.data]);
-        setEventForm(initialState);
+        setEventForm(initialEventState);
       });
   };
 
@@ -172,7 +172,7 @@ function Admin() {
         })
         .then((response) => {
           console.log("Event Deleted: ", response.data);
-          setSelectedEvent(initialState);
+          setSelectedEvent(initialEventState);
           fetchEventData();
         });
     }
