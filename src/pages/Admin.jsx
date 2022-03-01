@@ -251,7 +251,7 @@ function Admin() {
       default:
       case "members":
         const sortedMembers = memberList
-        sortedMembers.sort((b, a) => a.membership - b.membership)
+        sortedMembers.sort((a,b) => (a.membership > b.membership) ? 1 : ((b.membership > a.membership) ? -1 : 0))
         return (
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -906,7 +906,7 @@ function Admin() {
                 <button
                   type="submit"
                   className="w-1/4 flex mx-auto justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-400 hover:bg-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                  onSubmit={memberEditSubmit}
+                  onClick={memberEditSubmit}
                 >
                   Update
                 </button>
