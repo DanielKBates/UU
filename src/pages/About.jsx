@@ -29,13 +29,7 @@ const people = [
 ];
 
 function About() {
-  axios.defaults.withCredentials = true;
-  useEffect(async () => {
-    const res = await axios.get(
-      "https://uuexpress.herokuapp.com/api/test/test-cookie"
-    );
-    console.log(res);
-  }, []);
+
   return (
     <div className="bg-white pt-24 ">
       <div className="flex justify-center items-start w-full ">

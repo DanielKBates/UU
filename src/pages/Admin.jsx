@@ -12,7 +12,7 @@ const tabs = [
   { name: "Events", value: "events", current: false },
 ];
 
-const initialState = {
+const initialEventState = {
   name: "",
   title: "",
   path: "",
@@ -23,51 +23,38 @@ const initialState = {
   featured: false,
 };
 
+const initialMemberState = {
+  fName: "",
+  lName: "",
+  seasonTix: false,
+  suppSection: false,
+  email: "",
+  phone: "",
+  tier: "",
+  birthday: new Date(),
+  membership: "",
+};
+
 function Admin() {
   const [loading, setLoading] = useState("loading");
   const [currentTab, setCurrentTab] = useState("members");
-  const [formData, setFormData] = useState(initialState);
+  const [eventForm, setEventForm] = useState(initialEventState);
   const [eventList, setEventList] = useState([]);
   const [memberList, setMemberList] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState({});
-  const [selectedMember, setSelectedMember] = useState({});
+  const [selectedMember, setSelectedMember] = useState(initialMemberState);
 
-  const { control, register, handleSubmit } = useForm();
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
-  // const pingSecret = async () => {
-  //   const data = await axios.get("https://uuexpress.herokuapp.com/api/admin/secret", {});
-    
-  // };
-
-  const handleFeatChange = async (e) => {
-    e.preventDefault();
-    try {
-      const data = await axios.post(
-        "https://uuexpress.herokuapp.com/api/events/remove-featured"
-      );
-      const res =
-        data &&
-        (await axios.post(
-          "https://uuexpress.herokuapp.com/api/events/remove-featured",
-          selectedEvent._id
-        ));
-      // setSelectedEvent(res);
-      console.log(res);
-      const addRes =
-        res &&
-        (await axios.post("https://uuexpress.herokuapp.com/api/events/add-featured", {
-          id: selectedEvent._id,
-        }));
-      console.log(addRes);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
+  // Data fetches
   const fetchEventData = async () => {
     try {
       setLoading("loading");
-      const { data: res } = await axios.get("https://uuexpress.herokuapp.com/api/events");
+      const { data: res } = await axios.get(
+        "https://uuexpress.herokuapp.com/api/events"
+      );
       setEventList(res);
       setLoading("done");
     } catch (error) {
@@ -92,45 +79,24 @@ function Admin() {
     setCurrentTab(e.target.value);
   };
 
-  const handleDeleteEvent = (e) => {
-    e.preventDefault();
-    if (window.confirm("Are you sure?")) {
-      axios
-        .post("https://uuexpress.herokuapp.com/api/events/delete-event", {
-          id: selectedEvent._id,
-        })
-        .then((response) => {
-          console.log("Event Deleted: ", response.data);
-          setSelectedEvent(initialState);
-          fetchEventData();
-        });
-    }
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
- 
-
-  const handleFormSubmit = (e) => {
+  const handleNewEvent = (e) => {
     e.preventDefault();
     const reqData = {
-      name: formData.name,
-      title: formData.title,
-      path: formData.path,
-      href: formData.href,
-      desc: formData.desc,
-      addDesc: formData.addDesc,
-      imagePath: formData.imagePath,
-      featured: formData.featured,
+      name: eventForm.name,
+      title: eventForm.title,
+      path: eventForm.path,
+      href: eventForm.href,
+      desc: eventForm.desc,
+      addDesc: eventForm.addDesc,
+      imagePath: eventForm.imagePath,
+      featured: eventForm.featured,
     };
     axios
       .post("https://uuexpress.herokuapp.com/api/events/create-event", reqData)
       .then((response) => {
         console.log("Event Created: ", response.data);
         setEventList([...eventList, response.data]);
-        setFormData(initialState);
+        setEventForm(initialState);
       });
   };
 
@@ -141,11 +107,11 @@ function Admin() {
     setSelectedEvent(c);
   };
 
-  const handleEditChange = (e) => {
+  const handleEventEditChange = (e) => {
     setSelectedEvent({ ...selectedEvent, [e.target.name]: e.target.value });
   };
 
-  const handleEditSubmit = (e) => {
+  const handleEventEditSubmit = (e) => {
     e.preventDefault();
     const reqData = {
       name: selectedEvent.name,
@@ -169,42 +135,89 @@ function Admin() {
     window.alert("Event Edited!");
   };
 
+  const handleFeatChange = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await axios.post(
+        "https://uuexpress.herokuapp.com/api/events/remove-featured"
+      );
+      const res =
+        data &&
+        (await axios.post(
+          "https://uuexpress.herokuapp.com/api/events/remove-featured",
+          selectedEvent._id
+        ));
+      // setSelectedEvent(res);
+      console.log(res);
+      const addRes =
+        res &&
+        (await axios.post(
+          "https://uuexpress.herokuapp.com/api/events/add-featured",
+          {
+            id: selectedEvent._id,
+          }
+        ));
+      console.log(addRes);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const handleDeleteEvent = (e) => {
+    e.preventDefault();
+    if (window.confirm("Are you sure?")) {
+      axios
+        .post("https://uuexpress.herokuapp.com/api/events/delete-event", {
+          id: selectedEvent._id,
+        })
+        .then((response) => {
+          console.log("Event Deleted: ", response.data);
+          setSelectedEvent(initialState);
+          fetchEventData();
+        });
+    }
+  };
+
+  const handleEventFormChange = (e) => {
+    setEventForm({ ...eventForm, [e.target.name]: e.target.value });
+  };
+
   // member editing
-  const memberEditSubmit = async (data) => {
-    const bday = format(new Date(data.birthday), "dd MMMM yyyy");
+
+  const handleMemberSelect = (e) => {
+    // REFACTOR TO FILTER BY ID -> CHANGE VALUE ON FORM
+    const m = memberList.filter((member) => member.email === e.target.value);
+    setSelectedMember(m[0]);
+    setCurrentTab("memberEdit");
+  };
+
+  const handleMemberEdit = (e) => {
+    setSelectedMember({ ...selectedMember, [e.target.name]: e.target.value });
+  };
+
+  const memberEditSubmit = () => {
+    const bday = format(new Date(selectedMember.birthday), "dd MMMM yyyy");
     const reqData = {
       id: selectedMember._id,
-      fName: data.fName,
-      lName: data.lName,
-      seasonTix: data.seasonTix,
-      suppSection: data.suppSection,
-      email: data.email,
-      phone: data.phone,
-      tier: data.tier,
+      fName: selectedMember.fName,
+      lName: selectedMember.lName,
+      seasonTix: selectedMember.seasonTix,
+      suppSection: selectedMember.suppSection,
+      email: selectedMember.email,
+      phone: selectedMember.phone,
+      tier: selectedMember.tier,
       birthday: bday,
-      membership: data.membership,
+      membership: selectedMember.membership,
     };
     console.log(reqData);
     axios
       .post("https://uuexpress.herokuapp.com/api/members/edit-member", reqData)
       .then(function (result) {
         fetchMemberData();
-        setSelectedMember({})
+        setSelectedMember(initialMemberState);
         setCurrentTab("members");
       });
   };
-
-
-
-  const handleMemberSelect = (e) => {
-    const m = memberList.filter((member) => member.email === e.target.value);
-    setSelectedMember(m[0]);
-    setCurrentTab("memberEdit");
-  };
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   const deleteMember = (e) => {
     e.preventDefault();
@@ -216,7 +229,6 @@ function Admin() {
         .then(fetchMemberData());
     }
   };
-
   const DOBValidate = (date) => {
     var today = new Date();
     var birthDate = new Date(date);
@@ -392,8 +404,8 @@ function Admin() {
                             id="name"
                             className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                             placeholder="Internal name for event, not user facing"
-                            value={formData.name}
-                            onChange={handleInputChange}
+                            value={eventForm.name}
+                            onChange={handleEventFormChange}
                           />
                         </div>
                       </div>
@@ -413,8 +425,8 @@ function Admin() {
                             id="title"
                             className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                             placeholder="User facing event title"
-                            value={formData.title}
-                            onChange={handleInputChange}
+                            value={eventForm.title}
+                            onChange={handleEventFormChange}
                           />
                         </div>
                       </div>
@@ -434,8 +446,8 @@ function Admin() {
                             id="imagePath"
                             className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                             placeholder="Link to the s3 bucket"
-                            value={formData.imagePath}
-                            onChange={handleInputChange}
+                            value={eventForm.imagePath}
+                            onChange={handleEventFormChange}
                           />
                         </div>
                       </div>
@@ -455,8 +467,8 @@ function Admin() {
                             id="href"
                             className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                             placeholder="eventbright.com/ourCoolEvent"
-                            value={formData.href}
-                            onChange={handleInputChange}
+                            value={eventForm.href}
+                            onChange={handleEventFormChange}
                           />
                         </div>
                       </div>
@@ -476,8 +488,8 @@ function Admin() {
                             id="path"
                             className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                             placeholder="/the-url-we-want"
-                            value={formData.path}
-                            onChange={handleInputChange}
+                            value={eventForm.path}
+                            onChange={handleEventFormChange}
                           />
                         </div>
                       </div>
@@ -496,8 +508,8 @@ function Admin() {
                           name="desc"
                           rows={3}
                           className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                          value={formData.desc}
-                          onChange={handleInputChange}
+                          value={eventForm.desc}
+                          onChange={handleEventFormChange}
                         />
                         <p className="mt-2 text-sm text-gray-500">
                           Write a description about the event. (required)
@@ -517,8 +529,8 @@ function Admin() {
                           name="addDesc"
                           rows={3}
                           className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                          value={formData.addDesc}
-                          onChange={handleInputChange}
+                          value={eventForm.addDesc}
+                          onChange={handleEventFormChange}
                         />
                         <p className="mt-2 text-sm text-gray-500">
                           Extra space for additional paragraph (optional)
@@ -529,7 +541,7 @@ function Admin() {
                 </div>
               </div>
               <button
-                onClick={handleFormSubmit}
+                onClick={handleNewEvent}
                 className="p-4 bg-blue-400 text-white rounded-md w-1/6 mx-auto"
               >
                 Save
@@ -620,7 +632,7 @@ function Admin() {
                                 className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                                 placeholder={selectedEvent.name}
                                 value={selectedEvent.name}
-                                onChange={handleEditChange}
+                                onChange={handleEventEditChange}
                               />
                             </div>
                           </div>
@@ -641,7 +653,7 @@ function Admin() {
                                 className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                                 placeholder={selectedEvent.title}
                                 value={selectedEvent.title}
-                                onChange={handleEditChange}
+                                onChange={handleEventEditChange}
                               />
                             </div>
                           </div>
@@ -662,7 +674,7 @@ function Admin() {
                                 className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                                 placeholder={selectedEvent.imagePath}
                                 value={selectedEvent.imagePath}
-                                onChange={handleEditChange}
+                                onChange={handleEventEditChange}
                               />
                             </div>
                           </div>
@@ -683,7 +695,7 @@ function Admin() {
                                 className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                                 placeholder={selectedEvent.href}
                                 value={selectedEvent.href}
-                                onChange={handleEditChange}
+                                onChange={handleEventEditChange}
                               />
                             </div>
                           </div>
@@ -704,7 +716,7 @@ function Admin() {
                                 className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0  rounded-md sm:text-sm border-gray-300 p-2"
                                 placeholder={selectedEvent.path}
                                 value={selectedEvent.path}
-                                onChange={handleEditChange}
+                                onChange={handleEventEditChange}
                               />
                             </div>
                           </div>
@@ -725,7 +737,7 @@ function Admin() {
                               className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                               value={selectedEvent.desc}
                               placeholder={selectedEvent.desc}
-                              onChange={handleEditChange}
+                              onChange={handleEventEditChange}
                             />
                             <p className="mt-2 text-sm text-gray-500">
                               Write a description about the event. (required)
@@ -747,7 +759,7 @@ function Admin() {
                               className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                               value={selectedEvent.addDesc}
                               placeholder={selectedEvent.addDesc}
-                              onChange={handleEditChange}
+                              onChange={handleEventEditChange}
                             />
                             <p className="mt-2 text-sm text-gray-500">
                               Extra space for additional paragraph (optional)
@@ -759,7 +771,7 @@ function Admin() {
                   </div>
                   <div className="flex flex-row gap-x-4">
                     <button
-                      onClick={handleEditSubmit}
+                      onClick={handleEventEditSubmit}
                       className="p-4 bg-blue-400 text-white rounded-md w-1/6 "
                     >
                       Save Edits
@@ -789,18 +801,15 @@ function Admin() {
       case "memberEdit":
         return (
           <div className="min-w-full h-full bg-white ">
-            <form
-              className="flex flex-col space-y-4 p-4"
-              onSubmit={handleSubmit(memberEditSubmit)}
-            >
+            <form className="flex flex-col space-y-4 p-4">
               <div>
                 <label htmlFor="fName">First Name</label>
                 <input
                   id="fName"
                   name="fName"
-                  defaultValue={selectedMember.fName}
+                  value={selectedMember.fName}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("fName")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div>
@@ -808,26 +817,24 @@ function Admin() {
                 <input
                   id="lName"
                   name="lName"
-                  defaultValue={selectedMember.lName}
+                  value={selectedMember.lName}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("lName")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div className="relative w-40">
                 <label htmlFor="birthday">DOB</label>
-
-                <Controller
-                  control={control}
-                  name="birthday"
-                  render={({ field }) => (
-                    <DatePicker
-                      selected={field.value}
-                      onChange={(date) => field.onChange(date)}
-                      nextMonthButtonLabel=">"
-                      previousMonthButtonLabel="<"
-                      popperClassName="react-datepicker-far-right"
-                    />
-                  )}
+                <DatePicker
+                  selected={selectedMember.birthday}
+                  onChange={(date) =>
+                    setSelectedMember((b) => ({
+                      ...b,
+                      birthday: date,
+                    }))
+                  }
+                  nextMonthButtonLabel=">"
+                  previousMonthButtonLabel="<"
+                  popperClassName="react-datepicker-far-right"
                 />
               </div>
               <div>
@@ -835,9 +842,9 @@ function Admin() {
                 <input
                   id="phone"
                   name="phone"
-                  defaultValue={selectedMember.phone}
+                  value={selectedMember.phone}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("phone")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div>
@@ -845,9 +852,9 @@ function Admin() {
                 <input
                   id="email"
                   name="email"
-                  defaultValue={selectedMember.email}
+                  value={selectedMember.email}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("email")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div>
@@ -855,9 +862,9 @@ function Admin() {
                 <input
                   id="seasonTix"
                   name="seasonTix"
-                  defaultValue={selectedMember.seasonTix}
+                  value={selectedMember.seasonTix}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("seasonTix")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div>
@@ -867,9 +874,9 @@ function Admin() {
                 <input
                   id="suppSection"
                   name="suppSection"
-                  defaultValue={selectedMember.suppSection}
+                  value={selectedMember.suppSection}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("suppSection")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div>
@@ -877,9 +884,9 @@ function Admin() {
                 <input
                   id="tier"
                   name="tier"
-                  defaultValue={selectedMember.tier}
+                  value={selectedMember.tier}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("tier")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div>
@@ -887,15 +894,16 @@ function Admin() {
                 <input
                   id="membership"
                   name="membership"
-                  defaultValue={selectedMember.membership}
+                  value={selectedMember.membership}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
-                  {...register("membership")}
+                  onChange={handleMemberEdit}
                 />
               </div>
               <div>
                 <button
                   type="submit"
                   className="w-1/4 flex mx-auto justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-400 hover:bg-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  onSubmit={memberEditSubmit}
                 >
                   Update
                 </button>
@@ -907,7 +915,6 @@ function Admin() {
   };
 
   useEffect(() => {
-    // pingSecret();
     fetchEventData();
     fetchMemberData();
   }, []);
