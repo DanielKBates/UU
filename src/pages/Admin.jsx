@@ -251,7 +251,7 @@ function Admin() {
       default:
       case "members":
         const sortedMembers = memberList
-        sortedMembers.sort((a,b) => (a.membership > b.membership) ? 1 : ((b.membership > a.membership) ? -1 : 0))
+        sortedMembers.sort((b,a) => (a.membership > b.membership) ? 1 : ((b.membership > a.membership) ? -1 : 0))
         return (
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
