@@ -828,7 +828,7 @@ function Admin() {
               <div className="relative w-40">
                 <label htmlFor="birthday">DOB</label>
                 <DatePicker
-                  selected={selectedMember.birthday ? parseISO(selectedMember.birthday) : new Date()}
+                  selected={selectedMember.birthday ? parseISO(selectedMember.birthday) : null}
                
                   onChange={(date) =>
                     setSelectedMember((b) => ({
