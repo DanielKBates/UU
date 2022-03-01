@@ -828,12 +828,8 @@ function Admin() {
               <div className="relative w-40">
                 <label htmlFor="birthday">DOB</label>
                 <DatePicker
-                  selected={parseISO(selectedMember.birthday)}
-                  onSelect={(date) =>
-                    setSelectedMember((b) => ({
-                      ...b,
-                      birthday: parseISO(date),
-                    }))}
+                  selected={parseISO(selectedMember.birthday) || new Date}
+               
                   onChange={(date) =>
                     setSelectedMember((b) => ({
                       ...b,
