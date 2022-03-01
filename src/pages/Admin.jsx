@@ -250,8 +250,10 @@ function Admin() {
     switch (tab) {
       default:
       case "members":
-        const sortedMembers = memberList
-        sortedMembers.sort((b,a) => (a.membership > b.membership) ? 1 : ((b.membership > a.membership) ? -1 : 0))
+        const sortedMembers = memberList;
+        sortedMembers.sort((b, a) =>
+          a.membership > b.membership ? 1 : b.membership > a.membership ? -1 : 0
+        );
         return (
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -828,12 +830,11 @@ function Admin() {
               <div className="relative w-40">
                 <label htmlFor="birthday">DOB</label>
                 <DatePicker
-                  selected={selectedMember.birthday ? parseISO(selectedMember.birthday) : null}
-               
+                  selected={parseISO(selectedMember.birthday)}
                   onChange={(date) =>
                     setSelectedMember((b) => ({
                       ...b,
-                      birthday: parseISO(date),
+                      birthday: date,
                     }))
                   }
                   nextMonthButtonLabel=">"
