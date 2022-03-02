@@ -252,10 +252,10 @@ function Admin() {
     console.log("ISO parsed", parseISO(date))
     console.log("date construct", new Date(date))
 
-    // setSelectedMember((b) => ({
-    //   ...b,
-    //   birthday: parseISO(date),
-    // }))
+    setSelectedMember((b) => ({
+      ...b,
+      birthday: new Date(date),
+    }))
   };
 
   const renderSwitch = (tab) => {
