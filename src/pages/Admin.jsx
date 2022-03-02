@@ -834,7 +834,7 @@ function Admin() {
                   onChange={(date) =>
                     setSelectedMember((b) => ({
                       ...b,
-                      birthday: date,
+                      birthday: Date(date),
                     }))
                   }
                   nextMonthButtonLabel=">"
