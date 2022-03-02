@@ -248,6 +248,7 @@ function Admin() {
 
   const onDateChange = (date) => {
     const d = parseISO(date);
+    console.log(date)
     console.log(d);
     // setSelectedMember((b) => ({
     //   ...b,
