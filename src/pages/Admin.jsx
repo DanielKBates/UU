@@ -248,8 +248,10 @@ function Admin() {
 
   const onDateChange = (date) => {
     const d = parseISO(date);
-    console.log(date)
-    console.log(new Date(d));
+    console.log("just date", date)
+    console.log("ISO parsed", parseISO(date))
+    console.log("date construct", new Date(date))
+
     // setSelectedMember((b) => ({
     //   ...b,
     //   birthday: parseISO(date),
