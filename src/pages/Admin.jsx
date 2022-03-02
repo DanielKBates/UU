@@ -246,6 +246,15 @@ function Admin() {
     );
   };
 
+  const onDateChange = (date) => {
+    const d = parseISO(date);
+    console.log(d);
+    // setSelectedMember((b) => ({
+    //   ...b,
+    //   birthday: parseISO(date),
+    // }))
+  };
+
   const renderSwitch = (tab) => {
     switch (tab) {
       default:
@@ -831,13 +840,7 @@ function Admin() {
                 <label htmlFor="birthday">DOB</label>
                 <DatePicker
                   selected={parseISO(selectedMember.birthday)}
-                  onChange={(date) => {
-                  console.log(date)
-                    setSelectedMember((b) => ({
-                      ...b,
-                      birthday: parseISO(date),
-                    }))
-                  }}
+                  onChange={onDateChange}
                   nextMonthButtonLabel=">"
                   previousMonthButtonLabel="<"
                   popperClassName="react-datepicker-none"
