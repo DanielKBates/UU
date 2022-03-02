@@ -832,7 +832,7 @@ function Admin() {
                 <DatePicker
                   selected={parseISO(selectedMember.birthday)}
                   onChange={(date) => {
-                  console.log(date)
+                  console.log(parseISO(date))
                     setSelectedMember((b) => ({
                       ...b,
                       birthday: new Date(date),
