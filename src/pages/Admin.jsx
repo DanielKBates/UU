@@ -831,12 +831,13 @@ function Admin() {
                 <label htmlFor="birthday">DOB</label>
                 <DatePicker
                   selected={parseISO(selectedMember.birthday)}
-                  onChange={(date) =>
+                  onChange={(date) => {
+                  console.log(date)
                     setSelectedMember((b) => ({
                       ...b,
-                      birthday: Date(date),
+                      birthday: new Date(date),
                     }))
-                  }
+                  }}
                   nextMonthButtonLabel=">"
                   previousMonthButtonLabel="<"
                   popperClassName="react-datepicker-none"
