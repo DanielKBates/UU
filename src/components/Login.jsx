@@ -23,9 +23,10 @@ function Login(props) {
         },
         { withCredentials: true }
       )
-      .finally(function (res) {
+      .then(function (res) {
         if (res.status === 200) {
           setLoading("done")
+          
           navigate("/admin");
         } else {
           const error = new Error(res.error);

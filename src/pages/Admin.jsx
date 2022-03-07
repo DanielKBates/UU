@@ -6,6 +6,7 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import { format } from "date-fns";
 import DatePicker from "react-datepicker";
 import parseISO from "date-fns/parseISO";
+import { register, useForm, Controller } from "react-hook-form"
 
 const tabs = [
   { name: "Members", value: "members", current: true },
