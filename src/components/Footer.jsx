@@ -3,8 +3,8 @@ import { navbarItems, footerItems, sponsorList } from "./nav";
 export default function Footer() {
   return (
     <footer className="bg-blue-400">
-      <div className="flex flex-col-reverse md:grid grid-cols-2">
-        <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+      <div className="flex flex-col-reverse ">
+        <div className="max-w-7xl mx-auto py-6 px-4 overflow-hidden sm:px-6 lg:px-8">
           <p className="text-white text-center">
             Special Thanks to all of our Sponsors!
           </p>
@@ -19,7 +19,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-6 px-4 overflow-hidden sm:px-6 lg:px-8">
           <nav
             className="-mx-5 -my-2 flex flex-wrap justify-center"
             aria-label="Footer"
