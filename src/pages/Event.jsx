@@ -34,7 +34,7 @@ function Event() {
 
         <div className="px-5 py-4 flex flex-col md:w-2/3">
           <h2 className="font-display text-xl 2xl:text-4xl underline text-blue-400 uppercase">
-            {currentEvent.title}
+            {currentEvent.title}   
           </h2>
           <p className="py-6 text-lg">
           {currentEvent.desc}

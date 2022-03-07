@@ -26,7 +26,7 @@ function FeatEvent() {
     //   in the array being mapped onto the smaller cards. We will need to implement an admin panel for CLIENT to be able to add events and thus update the site.
     <div className=" flex flex-row py-6 md:justify-between w-full">
       {/* Events */}
-      <div className="flex flex-col w-full md:w-1/2">
+      <div className="flex flex-col w-full md:w-1/2 shadow-lg">
         <div className="bg-white bg-opacity-50 rounded-lg h-full">
           <img
             src={event.imagePath}
@@ -35,7 +35,7 @@ function FeatEvent() {
           />
           <div className="px-5 py-4 ">
             <Link to={`events${event.path}`}>
-              <h2 className="cursor-pointer text-3xl text-blue-400 uppercase">
+              <h2 className="cursor-pointer text-3xl text-cfc-100 uppercase">
                 {event.title}
               </h2>
             </Link>

@@ -32,14 +32,16 @@ const features = [
 function Home() {
   return (
     <main className="pb-2 lg:pb-4 xl:pb-12 pt-28 md:pt-36">
-      <div className="pb-12 px-4 xl:px-12 pt-2 rounded-lg bg-black sm:pt-16 lg:pt-8 lg:pb-14">
+      <div className="pb-12 px-4 xl:px-12 pt-2 rounded-lg shadow-lg bg-black sm:pt-16 lg:pt-8 lg:pb-14">
         <div className="mx-auto lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-6 rounded-xl">
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
               <div className="lg:py-24 ">
                 <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="block animate-fadeIn text-center md:text-left">It's Time</span>
-                  <span className="pb-3 text-center md:text-left block animate-fadeInLong text-blue-400 sm:pb-5 font-rockSalt py-4 ">
+                  <span className="block animate-fadeIn text-center md:text-left">
+                    It's Time
+                  </span>
+                  <span className="pb-3 text-center md:text-left block animate-fadeInLong text-cfc-100 sm:pb-5 font-rockSalt py-4 ">
                     To Get Hype
                   </span>
                 </h1>
@@ -47,21 +49,28 @@ function Home() {
                   Sign up now and join us on the historic journey that is
                   Charlotte FC's first MLS season!
                 </p>
-                <div className="mt-10 sm:mt-12 flex justify-center md:justify-start">
-                  <Link to="/signup" className=" w-1/2">
-                    <button className="bg-blue-400 p-4 w-full font-bold text-white rounded-lg animate-fadeInLong">
+                <div className="mt-10 sm:mt-12 flex flex-col gap-y-4 justify-center md:justify-start">
+                  <Link to="/signup" className=" w-full md:w-1/2">
+                    <button className="bg-cfc-100 p-4 w-full font-bold text-white hover:bg-teal-300 hover:text-cfc-100 rounded-lg animate-fadeInLong">
                       Sign Up!
                     </button>
                   </Link>
+                  <a
+                  target={"_blank"}
+                    href="https://onechaptr.com/collections/uptown-ultras"
+                    className="bg-teal-300 p-4 w-full md:w-1/2 font-bold text-cfc-100 hover:text-white hover:bg-cfc-100 text-center rounded-lg animate-fadeInLong"
+                  >
+                    Check out our Merch!
+                  </a>
                 </div>
               </div>
             </div>
             <div className=" mt-12 xl:mt-20  w-full">
               <div className="mx-auto flex flex-col max-w-md  px-4 sm:max-w-2xl sm:px-6 lg:px-0">
                 <img
-                  className="w-full rounded-md lg:h-full border-4 border-blue-400"
+                  className="w-full rounded-md lg:h-full border-4 border-cfc-100"
                   src="/assets/images/cfc.jpg"
-                  alt=""
+                  alt="Uptown Ultras Logos"
                   loading="lazy"
                 />
               </div>
@@ -79,9 +88,9 @@ function Home() {
         activeClassName="transition-all duration-500 ease-in transform opacity-1"
         inactiveClassName="transition-all duration-500 ease-in transform opacity-0"
       >
-        <div className="relative rounded-t-lg bg-white py-16 sm:py-24 lg:py-32">
+        <div className="relative rounded-t-lg bg-white py-16 sm:py-24">
           <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-            <p className="mt-2 text-4xl font-extrabold text-blue-400  sm:text-6xl">
+            <p className="mt-2 text-4xl font-extrabold text-cfc-100  sm:text-6xl">
               Part of the ship, Part of the crew
             </p>
             {/* <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
@@ -103,7 +112,7 @@ function Home() {
                             />
                           </span>
                         </div>
-                        <h3 className="mt-8 text-2xl font-medium text-blue-400 tracking-tight">
+                        <h3 className="mt-8 text-2xl font-medium text-cfc-100 tracking-tight">
                           {feature.name}
                         </h3>
                         <p className="mt-5 text-xl text-gray-700">
@@ -121,7 +130,7 @@ function Home() {
       {/* CTA Section - CFC, Tickets, and Charlotte */}
 
       {/* CFC and ticketmaster? links - BOA image bg */}
-      <div className="relative bg-blue-500">
+      <div className="relative bg-cfc-100">
         <div className="relative h-56  sm:h-72 md:absolute md:right-0 md:h-full md:w-1/2">
           <img
             className="w-full h-full object-cover"

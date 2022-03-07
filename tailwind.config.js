@@ -5,6 +5,11 @@ module.exports = {
       fontFamily:{
         "rockSalt": ['Rock Salt', "cursive"]
       },
+      colors:{
+        "cfc": {
+          100 : "#0082cb"
+        }
+      },
       keyframes : {
         fadeIn: {
           "0%": {opacity:"0"},

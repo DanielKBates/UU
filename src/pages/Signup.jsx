@@ -383,11 +383,10 @@ const Signup = () => {
               </h1>
               <ul className="list-disc list-inside ">
                 <li> Voting rights in Uptown Ultras elections</li>
-                <li>Access to Uptown Ultras Member Discord</li>
+                <li>Access to UU Member Discord</li>
                 <ul className="list-disc list-inside ml-4">
                   <li>Includes Member Ticket Exchange</li>
                 </ul>
-                <li>Uptown Member Card</li>
                 <li>Access to Tailgate</li>
                 <li>Access to Member events throughout the year</li>
                 <li>Away Match Viewing Parties with Ultras specials</li>
@@ -397,14 +396,13 @@ const Signup = () => {
               </h1>     
               <ul className="list-disc list-inside ">
                 <li> Voting rights in Uptown Ultras elections</li>
-                <li>Access to Uptown Ultras Member Discord</li>
+                <li>Access to UU Member Discord</li>
                 <ul className="list-disc list-inside ml-4">
                   <li>Includes Member Ticket Exchange</li>
                 </ul>
                 <li>Ultra Member Card</li>
                 <ul className="list-disc list-inside ml-4">
                   <li>Offers select discounts at restaurants/bars in Charlotte</li>
-                  <li>Discount parking (33% off) at 1200 S Graham Street on matchdays</li>
                 </ul>
                 <li>Access to Tailgate</li>
                 <li>Access to Member events throughout the year</li>
@@ -412,7 +410,7 @@ const Signup = () => {
                 <li>Access to 20% off merch</li>
                 <li>Uptown Ultra Inaugural Shirt</li>
                 <ul className="list-disc list-inside ml-4">
-                  <li>(Or future Uptown Ultras merch if shirt is alredy purchased)</li>
+                  <li>(Or future UU Merchandise of your choice if shirt is alredy purchased)</li>
                 </ul>
               </ul>           
             </div>
