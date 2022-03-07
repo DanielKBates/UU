@@ -23,7 +23,7 @@ function Login(props) {
         },
         { withCredentials: true }
       )
-      .then(function (res) {
+      .finally(function (res) {
         if (res.status === 200) {
           setLoading("done")
           navigate("/admin");

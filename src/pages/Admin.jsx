@@ -248,6 +248,7 @@ function Admin() {
 
   const onDateChange = (date) => {
     console.log("date construct", new Date(date))
+    console.log("just date", date)
     setSelectedMember((b) => ({
       ...b,
       birthday: new Date(date),
@@ -839,7 +840,7 @@ function Admin() {
                 <label htmlFor="birthday">DOB</label>
                 <DatePicker
                   selected={parseISO(selectedMember.birthday)}
-                  onChange={onDateChange}
+                  onSelect={onDateChange}
                   nextMonthButtonLabel=">"
                   previousMonthButtonLabel="<"
                   popperClassName="react-datepicker-none"
