@@ -79,6 +79,8 @@ const Navbar = () => {
                       {item.text}
                     </NavLink>
                   ))}
+                  <a href="https://onechaptr.com/collections/uptown-ultras" target="_blank" 
+                  className="px-3 py-2 rounded-md text-lg uppercase font-medium hover:bg-blue-400 text-white">Merch</a>
                 </div>
               </div>
 

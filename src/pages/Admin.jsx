@@ -676,7 +676,7 @@ function Admin() {
                             htmlFor="imagePath"
                             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                           >
-                            Image Path
+                            Image Path (always /assets/images/foo.jpg)
                           </label>
                           <div className="mt-1 sm:mt-0 sm:col-span-2">
                             <div className="max-w-lg flex rounded-md  border-2 border-gray-200">

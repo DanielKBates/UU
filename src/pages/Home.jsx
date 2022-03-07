@@ -85,8 +85,8 @@ function Home() {
       {/* Feature section with grid */}
       <AnimatedCard
         threshold={0.25}
-        activeClassName="transition-all duration-500 ease-in transform opacity-1"
-        inactiveClassName="transition-all duration-500 ease-in transform opacity-0"
+        activeClassName="transition-all duration-1000 ease-in transform opacity-1"
+        inactiveClassName="transition-all duration-1000 ease-in transform opacity-0"
       >
         <div className="relative rounded-t-lg bg-white py-16 sm:py-24">
           <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">

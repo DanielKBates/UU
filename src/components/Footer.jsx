@@ -1,4 +1,5 @@
 import { navbarItems, footerItems, sponsorList } from "./nav";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -27,8 +28,8 @@ export default function Footer() {
             {navbarItems.map((item) => (
               <div key={item.text} className="px-5 py-2">
                 <a
-                  to={item.href}
-                  className="text-base text-white hover:text-gray-900"
+                  href={item.href}
+                  className="text-base text-white hover:underline"
                 >
                   {item.text}
                 </a>
@@ -37,9 +38,17 @@ export default function Footer() {
             <div className="px-5 py-2">
               <a
                 href="/TOS"
-                className="text-base text-white hover:text-gray-900"
+                className="text-base text-white hover:underline"
               >
                 Terms and Conditions
+              </a>
+            </div>
+            <div className="px-5 py-2">
+              <a
+                href="https://onechaptr.com/collections/uptown-ultras"
+                className="text-base text-white hover:underline"
+              >
+                Merchandise Store
               </a>
             </div>
           </nav>

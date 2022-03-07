@@ -54,7 +54,7 @@ function EventPage() {
             <Link to={"/events/home-game-tailgates"}>
               <div className="bg-white  bg-opacity-50 rounded-lg h-full">
                 <img
-                  src="https://tekjumpbucket.s3.amazonaws.com/UU_tailgate.JPG"
+                  src="/assets/images/UU_tailgate.png"
                   width="100%"
                   className="m-auto cursor-pointer rounded-t-lg "
                 />

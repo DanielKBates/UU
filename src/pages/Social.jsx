@@ -1,15 +1,16 @@
 import React from "react";
+import AnimatedCard from "../components/AnimatedCard";
+import MerchCard from "../components/MerchCard";
 
 function Social() {
   return (
     <div className="pt-32">
-      <h1 className=" pb-6 font-rockSalt text-blue-400  text-xl md:text-4xl text-center ">
+      <h1 className=" pb-6 font-rockSalt text-blue-400  text-3xl md:text-4xl text-center ">
         {" "}
         Check out our social medias!
       </h1>
-      <div className="flex flex-col md:flex-row md:gap-4">
-     
 
+      <div className="flex flex-col md:flex-row md:gap-4">
         {/* Insta */}
         <div className="flex flex-col w-full pb-6 ">
           <img className="rounded-t-lg" src="assets/images/image_2.jpg" />
@@ -40,9 +41,14 @@ function Social() {
               />
             </svg>
             <p className="text-lg">
-              <a href="https://www.instagram.com/uptownultras/" className="text-blue-400">Check out our Instagram </a>. Stay up
-              to date on Uptown Ultras specific information and see how we cheer
-              on our team! Our most active social media!
+              <a
+                href="https://www.instagram.com/uptownultras/"
+                className="text-blue-400"
+              >
+                Check out our Instagram{" "}
+              </a>
+              . Stay up to date on Uptown Ultras specific information and see
+              how we cheer on our team! Our most active social media!
             </p>
           </div>
         </div>
@@ -50,7 +56,7 @@ function Social() {
         {/* twitter */}
         <div className="flex flex-col w-full pb-6">
           <img className="rounded-t-lg" src="assets/images/image_4.jpg" />
-<div className=" flex flex-col rounded-b-lg bg-gray-50 p-12">
+          <div className=" flex flex-col rounded-b-lg bg-gray-50 p-12">
             <svg
               viewBox="328 355 335 276"
               xmlns="http://www.w3.org/2000/svg"
@@ -78,11 +84,25 @@ function Social() {
             </svg>
             <p className="text-lg">
               {" "}
-              <a href="https://twitter.com/UltrasUptown" className="text-blue-400">Visit our Twitter</a>. Best for
-              keeping up with Charlotte FC and Supporter Group News.
+              <a
+                href="https://twitter.com/UltrasUptown"
+                className="text-blue-400"
+              >
+                Visit our Twitter
+              </a>
+              . Best for keeping up with Charlotte FC and Supporter Group News.
             </p>
           </div>
         </div>
+      </div>
+      <div className="pb-12">
+        <AnimatedCard
+          threshold={0.25}
+          activeClassName="transition-all duration-1000 ease-in transform opacity-1"
+          inactiveClassName="transition-all duration-1000 ease-in transform opacity-0"
+        >
+          <MerchCard />
+        </AnimatedCard>
       </div>
     </div>
   );
