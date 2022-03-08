@@ -1,30 +1,30 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 
 const people = [
   {
     name: "Lucas Barnhardt",
     role: "Founder / President",
     imageUrl: "/assets/images/lucas.jpg",
-    email: "lucasbarnhardt.uptownultras@gmail.com",
   },
   {
     name: "Wes Watts",
     role: "Event Planning",
     imageUrl: "/assets/images/wes.jpg",
-    email: "email@email.com",
   },
   {
     name: "Sean Gartley",
     role: "Co-Founder/ Vice President",
     imageUrl: "/assets/images/sean.jpg",
-    email: "email@email.com",
   },
   {
     name: "Charles Haddock",
     role: " Brand Exposure ",
     imageUrl: "/assets/images/charlesH.jpg",
-    email: "email@email.com",
+  },
+  {
+    name: "Dixon Bradbury",
+    role: " Treasurer and Community Service Co-Chair ",
+    imageUrl: "/assets/images/dixon.png",
   },
 ];
 

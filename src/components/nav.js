@@ -25,8 +25,8 @@ export const sponsorList = [
   { text: "Community Matters Cafe", href: "https://communitymatterscafe.com/" },
   { text: "Big Ben Pub", href: "https://www.bigbenpub.com/" },
   { text: "Clutch Kitchen and Pourhouse", href: "https://www.instagram.com/clutch_clt/?hl=en" },
-  { text: "The Cutting Lounge", href: "https://nextdoor.com/pages/the-cutting-lounge-charlotte-nc/" },
-  { text: "JPW Real Estate", href: "https://www.linkedin.com/company/jpwrealestate/" },
+  { text: "The Cutting Lounge", href: "https://salonlofts.com/carrie_dye" },
+  { text: "JPW Real Estate", href: "http://rogselect.m.realtyonegroup.com/directory/agents/perry-wiese-2" },
   { text: "Keen Building Company", href: "https://keenbuildingco.com/" },
 
 ];

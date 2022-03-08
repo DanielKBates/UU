@@ -14,7 +14,7 @@ export default function Footer() {
             {sponsorList.map((sponsor) => (
               <li>
                 <span className="text-white flex hover:underline justify-center">
-                  <a href={sponsor.href}>{sponsor.text}</a>
+                  <a target="_blank" href={sponsor.href}>{sponsor.text}</a>
                 </span>
               </li>
             ))}
